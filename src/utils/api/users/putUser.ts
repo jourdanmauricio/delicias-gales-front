@@ -1,6 +1,6 @@
 import { axiosApi } from '../api';
 
-const putUsers = async (id: string, changes) => {
+const putUser = async (id: string, changes) => {
   try {
     const response = await axiosApi.put(
       `/users/${id}`, changes
@@ -17,4 +17,4 @@ const putUsers = async (id: string, changes) => {
   }
 };
 
-export default putUsers;
+export default putUser;

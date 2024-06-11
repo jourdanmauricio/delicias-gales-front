@@ -142,6 +142,12 @@ export const fields = {
     required: true,
     type: "text",
   },
+  image: {
+    regex: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+    msgError: 'Url inválida',
+    required: false,
+    type: "text",
+  },
   open: {
     regex: /^([01]\d|2[0-3]):([0-5]\d)$/,
     msgError: 'Debe ingresar una hora válida',
@@ -194,7 +200,8 @@ export const fields = {
 
 export const formsApp = {
   loginForm: ['email', 'password'],
-  registerForm: ['name', 'email', 'password', 'confPassword']
+  registerForm: ['name', 'email', 'password', 'confPassword'],
+  profileForm: ['name', 'email', 'phone', 'identification', 'address', 'website', 'image']
 };
 
 // Formulario que modifican pass

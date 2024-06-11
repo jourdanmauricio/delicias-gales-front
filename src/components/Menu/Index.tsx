@@ -10,6 +10,8 @@ const Menu = async () => {
   const session = await getSession();
   const userSession = session?.user as UserSession;
 
+  console.log("userSession", userSession)
+
   return (
     <div>
       <div className='fixed z-10 w-full h-16 bg-purple-950/60 backdrop-blur-sm text-white'>
