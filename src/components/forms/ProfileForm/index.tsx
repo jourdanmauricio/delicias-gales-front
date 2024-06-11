@@ -9,8 +9,7 @@ import Image from 'next/image';
 import EditIcon from '@/icons/edit';
 
 const Profile = () => {
-  const { profile, loading, errors, selectedFile, preview, handleChange, handleSubmit, onSelectFile
-  } = useProfileForm()
+  const { profile, loading, errors, selectedFile, preview, handleChange, handleSubmit, onSelectFile, handleCancel } = useProfileForm()
   return (
 
     <main className='pt-20 max-w-[1024px] min-h-screen mx-auto px-10'>
@@ -148,8 +147,8 @@ const Profile = () => {
 
         </div>
         <div className='col-span-2 flex justify-between'>
-          <button className='btn btn-cancel'>Cancelar</button>
-          <button className='btn btn-confirm'>Modificar</button>
+          <button onClick={handleCancel} type='button' className='btn btn-cancel'>Cancelar</button>
+          <button type='submit' className='btn btn-confirm'>Modificar</button>
         </div>
       </form>
     </main >

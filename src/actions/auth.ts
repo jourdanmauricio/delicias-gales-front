@@ -2,10 +2,6 @@
 import { createSession, deleteSession, getSession } from '@/app/lib/session';
 import postLogin from '@/utils/api/auth/login';
 
-// import PutUpdateUser from '@/utils/puts/putUpdateUser';
-// import IChangePassForm from '@/utils/types/auth/changePassFormInterface';
-// import ILoginForm from '@/utils/types/auth/loginFormInterface';
-
 export const HandleLogin = async (credentials) => {
 
   const data = await postLogin(credentials);

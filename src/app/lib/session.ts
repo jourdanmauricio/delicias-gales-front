@@ -1,7 +1,7 @@
 import 'server-only'
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
-import { SessionPayload, User } from './definitions'
+import { SessionPayload } from './definitions'
 
 const secretKey = process.env.SESSION_SECRET
 const encodedKey = new TextEncoder().encode(secretKey)
@@ -39,33 +39,6 @@ export async function createSession(payload: any) {
   })
 }
 
-// export async function updateSession(payload: any) {
-//   const session = cookies().get('session')?.value
-  
-//   if (!session || !payload) {
-//     return null
-//   }
-
-//   const originalSession = await decrypt(session) 
-//   console.log("originalSession", originalSession)
-
-//   originalSession.user = payload;
-
-//   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-//   payload.expiresAt = expiresAt
-  
-//   const newSession = await encrypt(originalSession as any)
-
-//   const res = NextResponse.next()
-//   res.cookies.set('session', newSession, {
-//     httpOnly: true,
-//     // secure: true,
-//     expires: expiresAt,
-//     sameSite: 'lax',
-//     path: '/',
-//   })
-// }
-
 export function deleteSession() {
   cookies().delete('session')
 }
@@ -73,10 +46,6 @@ export function deleteSession() {
 export const getSession = async () => {
   const cookie = cookies().get('session')?.value
   const session = await decrypt(cookie)
-
-  // if (!session?.user) {
-  //   redirect('/login')
-  // }
 
   if (session?.user) {
     return { auth: true, user: session.user, token: session.token }

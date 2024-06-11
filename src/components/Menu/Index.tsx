@@ -29,7 +29,7 @@ const Menu = async () => {
             </Link>
 
             {userSession ? (
-              <SessionMenu userSession={userSession} />
+              <SessionMenu />
             ) : (
               <Link href={'/login'}>
                 <CircleButton className='p-2 rounded-full cursor-pointer hover:bg-purple-950/20'>
