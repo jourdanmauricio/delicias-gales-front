@@ -8,14 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,10 +16,127 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: var(--font-inter);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ************************* */
+/* Para inputs de tipo phone */
+/* ************************* */
+.react-international-phone-input,
+.react-international-phone-country-selector-button {
+  background-color: rgb(229 231 235) !important;
+  height: 1.1rem !important;
+  /* padding: 0 1rem !important; */
+}
+
+/***************/
+/* FORMULARIOS */
+/***************/
+/* label */
+.label-form {
+  @apply block text-sm font-semibold text-gray-700;
+}
+
+/* input */
+.input-form {
+  @apply block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-2 py-2 text-base leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none;
+}
+
+.input-error {
+  @apply text-sm text-red-500 h-4 transition-opacity duration-500 ease-in-out;
+}
+
+/* buttons */
+.btn {
+  @apply mt-4 rounded-lg px-6 py-3 font-bold;
+}
+
+.btn-confirm {
+  @apply bg-custom-fourth text-custom-primary hover:bg-custom-secondary hover:text-custom-primary;
+}
+
+.btn-cancel {
+  @apply bg-gray-300 hover:bg-gray-300/70;
+}
+
+.btn-disabled {
+  @apply w-40 cursor-not-allowed bg-gray-300 opacity-50;
+  @apply bg-gray-300 hover:bg-gray-300/70;
+}
+
+/* select  */
+.select-form {
+  @apply block h-12 rounded border border-solid border-gray-400 bg-gray-100 bg-gradient-to-r from-transparent from-60% via-amber-100 via-80% to-green-200 to-90% p-2.5 pl-4 font-[500] text-gray-600 focus:border-gray-400 focus:ring-1 focus:ring-gray-300;
+}
+
+.select-option {
+  @apply bg-gray-100 p-2 font-[500] text-gray-700  hover:bg-gray-300;
+}
+
+.search-icon {
+  @apply pointer-events-none absolute right-4 top-1/2 w-10 -translate-y-1/2 transform text-slate-700 transition-transform duration-300 group-hover:rotate-45;
+}
+
+.select-form-booking {
+  @apply block h-10 rounded-full border border-solid border-gray-400 bg-gray-100 bg-gradient-to-r from-transparent from-60% via-amber-100 via-80% to-green-200 to-90% p-2.5 pl-4 text-sm font-bold text-gray-600 focus:border-gray-400 focus:ring-1 focus:ring-gray-300;
+}
+
+.search-icon-booking {
+  @apply pointer-events-none absolute right-4 top-1/2 w-6 -translate-y-1/2 transform text-slate-700 transition-transform duration-300 group-hover:rotate-45;
+}
+
+/* linear gradien for footer */
+
+.gradient-footer{
+  background: rgb(39,59,37);
+  background: linear-gradient(36deg, rgba(39,59,37,1) 0%, rgba(25,35,39,1) 100%); 
+}
+
+/*   Tabs   */
+.tabs__container {
+  @apply flex flex-col relative w-full bg-slate-300 break-words border border-solid border-gray-50;
+}
+.tabs__bloc {
+  @apply flex;
+}
+.tabs {
+  @apply relative p-[15px] text-base text-center w-1/2 text-slate-800 bg-gray-200 cursor-pointer border-b border-solid border-gray-300 outline-0 flex items-center justify-center gap-4;
+}
+.tabs:not(:last-child) {
+  @apply border-r border-solid border-r-slate-950;
+}
+.active__tabs {
+  @apply bg-white border-b border-solid border-transparent;
+}
+.active__tabs::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: #c2da88;
+}
+.tabs__content {
+  @apply grow bg-white;
+}
+.tab__content {
+  @apply bg-white pb-5 py-0 px-5 w-full h-full hidden;
+}
+.tab__content h2 {
+  @apply pb-1 pt-0 px-0;
+}
+.tab__content hr {
+  @apply w-full h-0.5 bg-gray-400 mb-1;
+}
+.active__content {
+  @apply block;
 }
