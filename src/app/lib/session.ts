@@ -43,32 +43,32 @@ type JWTPayload = {
   user: User,
   token: string,
 }
-export async function updateSession(payload: any) {
-  const session = cookies().get('session')?.value
-  const originalSession: JWTPayload = await decrypt(session) 
-  console.log("originalSession", originalSession)
+// export async function updateSession(payload: any) {
+//   const session = cookies().get('session')?.value
+//   const originalSession: JWTPayload = await decrypt(session) 
+//   console.log("originalSession", originalSession)
 
-  originalSession.user = payload;
+//   originalSession.user = payload;
 
 
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-  payload.expiresAt = expiresAt
+//   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+//   payload.expiresAt = expiresAt
   
-  // const newSession = await encrypt(originalSession)
+//   // const newSession = await encrypt(originalSession)
 
-  if (!session || !payload) {
-    return null
-  }
+//   if (!session || !payload) {
+//     return null
+//   }
 
-  // const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-  cookies().set('session', session, {
-    httpOnly: true,
-    // secure: true,
-    expires: expiresAt,
-    sameSite: 'lax',
-    path: '/',
-  })
-}
+//   // const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+//   cookies().set('session', session, {
+//     httpOnly: true,
+//     // secure: true,
+//     expires: expiresAt,
+//     sameSite: 'lax',
+//     path: '/',
+//   })
+// }
 
 export function deleteSession() {
   cookies().delete('session')
