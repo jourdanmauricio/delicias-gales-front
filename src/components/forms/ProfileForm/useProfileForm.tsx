@@ -3,8 +3,7 @@ import { IUser, initUser, initUserError } from '@/utils/types/users/IUser'
 import { useEffect, useState } from 'react'
 import { validateForm, validatefield } from '../validateForm'
 import uploadFile from '@/utils/api/files/uploadFile'
-// import putUsers from '@/utils/api/users/putUser'
-import { UpdateProfile } from '@/actions/auth'
+import putUser from '@/utils/api/users/putUser'
 
 const useProfileForm = () => {
   const [loading, setLoading] = useState(false)
@@ -13,7 +12,8 @@ const useProfileForm = () => {
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState('');
 
-  const user = useUserStore(state => state.user)
+  const { user, setUser } = useUserStore(state => state)
+
 
   useEffect(() => {
     if (user) setProfile(user);
@@ -76,9 +76,8 @@ const useProfileForm = () => {
         data.image = secure_url
       }
 
-      const updUser = await UpdateProfile(profile.id, data);
-      console.log("updUser", updUser)
-
+      const updUser = await putUser(id, data);
+      setUser(updUser);
     } catch (error) {
       //
     }

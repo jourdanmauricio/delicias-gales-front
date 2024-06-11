@@ -39,29 +39,25 @@ export async function createSession(payload: any) {
   })
 }
 
-type JWTPayload = {
-  user: User,
-  token: string,
-}
 // export async function updateSession(payload: any) {
 //   const session = cookies().get('session')?.value
-//   const originalSession: JWTPayload = await decrypt(session) 
-//   console.log("originalSession", originalSession)
-
-//   originalSession.user = payload;
-
-
-//   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-//   payload.expiresAt = expiresAt
   
-//   // const newSession = await encrypt(originalSession)
-
 //   if (!session || !payload) {
 //     return null
 //   }
 
-//   // const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-//   cookies().set('session', session, {
+//   const originalSession = await decrypt(session) 
+//   console.log("originalSession", originalSession)
+
+//   originalSession.user = payload;
+
+//   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+//   payload.expiresAt = expiresAt
+  
+//   const newSession = await encrypt(originalSession as any)
+
+//   const res = NextResponse.next()
+//   res.cookies.set('session', newSession, {
 //     httpOnly: true,
 //     // secure: true,
 //     expires: expiresAt,

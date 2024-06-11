@@ -16,7 +16,8 @@ const useLoginForm = () => {
     email: '',
     password: '',
   });
-  const setUser = useUserStore(state => state.setUser);
+  const {setUser, user} = useUserStore(state => state);
+  // const user = useUserStore(state => state.user);
   const router = useRouter();
 
 
@@ -52,7 +53,7 @@ const useLoginForm = () => {
           title: 'Bienvenido',
           showConfirmButton: false,
           width: '450px',
-          timer: 2000,
+          timer: 1500,
        });
       router.push("/");
     } catch (error) {
