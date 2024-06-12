@@ -8,7 +8,8 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-body {
+
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -17,7 +18,7 @@ body {
     )
     rgb(var(--background-start-rgb));
     font-family: var(--font-inter);
-}
+} */
 
 @layer utilities {
   .text-balance {
