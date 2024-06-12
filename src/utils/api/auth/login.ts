@@ -19,7 +19,7 @@ const postLogin = async(data: any) => {
     } else {
       message = error.message;
     }
-    throw message;
+    return { error: message || 'error desconcido' };
   }
 };
 
