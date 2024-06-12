@@ -58,7 +58,6 @@ const useLoginForm = () => {
       });
      router.push("/");
     } else {
-      console.log("errrrrrrrrrrrrrrrrrr", data.error)
       Swal.fire({
         icon: 'error',
         title: 'Error',
