@@ -43,27 +43,27 @@ const useLoginForm = () => {
       return;
     }
 
-    try {
-      setLoading(true);
-      const data = await HandleLogin(newData);
+
+    setLoading(true);
+    const data = await HandleLogin(newData);
+    setLoading(false);
+    if (!data.error) {
       setUser(data.user);
-      setLoading(false);
-        Swal.fire({
-          icon: 'success',
-          title: 'Bienvenido',
-          showConfirmButton: false,
-          width: '450px',
-          timer: 1500,
-       });
-      router.push("/");
-    } catch (error) {
-      setLoading(false);
       Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: error,
-          confirmButtonColor: '#222B2D',
-       });
+        icon: 'success',
+        title: 'Bienvenido',
+        showConfirmButton: false,
+        width: '450px',
+        timer: 1500,
+      });
+     router.push("/");
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: data.error,
+        confirmButtonColor: '#222B2D',
+      });
     }
   };
 

@@ -37,7 +37,7 @@ const SessionMenu = () => {
   return (
     <div className='relative flex'>
       <button onClick={handleClick} ref={menuRef}>
-        {user.image ? (
+        {user?.image ? (
           <Image
             className='w-10 h-10 object-cover rounded-full'
             src={user.image}
@@ -47,7 +47,7 @@ const SessionMenu = () => {
           />
         ) : (
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-custom-primary text-custom-secondary">
-            {user.name.slice(0, 1)}
+            {user?.name.slice(0, 1)}
           </div>
         )}
       </button>
