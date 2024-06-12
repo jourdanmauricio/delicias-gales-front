@@ -49,8 +49,6 @@ const useRegisterForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("Submit")
-
     const errors = validateForm(newData, 'registerForm');
 
     const valuesFormError = Object.values(errors);
@@ -73,7 +71,6 @@ const useRegisterForm = () => {
       });
       router.push("/login");
     } catch (error) {
-      console.log("Error", error)      
       setLoading(false);
       Swal.fire({
         icon: 'error',

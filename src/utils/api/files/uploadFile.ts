@@ -5,8 +5,6 @@ const urlBase = process.env.NEXT_PUBLIC_API_URL;
 const uploadFile = async(data: any) => {
   const url = `${urlBase}/files/upload-file`;
 
-  console.log("uploadFile")
-
   try {
     const response = await axiosApi.post(url, data, {
       headers: {
