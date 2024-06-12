@@ -40,6 +40,7 @@ const useForgotPassForm = () => {
         width: '450px',
       });
     } catch (error: any) {
+      setLoading(false);
       Swal.fire({
         icon: 'error',
         title: 'Error',
