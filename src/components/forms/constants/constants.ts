@@ -83,14 +83,14 @@ export const fields = {
     type: "text",
   },
   password: {
-    regex: /^.{8,}$/,
-    msgError: 'Debe tener al menos 8 caracteres',
+    regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-8])(?=.*[!@#$%^&*_])/,
+    msgError: 'Debe tener al menos 8 caracteres, una mayúscula, una minúscula y un caracter (!@#$%^&*_)',
     required: true,
     type: "text",
   },
   confPassword: {
-    regex: /^.{8,}$/,
-    msgError: 'Debe tener al menos 8 caracteres',
+    regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-8])(?=.*[!@#$%^&*_])/,
+    msgError: 'Debe tener al menos 8 caracteres, una mayúscula, una minúscula y un caracter (!@#$%^&*_)',
     required: true,
     type: "text",
   },
@@ -201,7 +201,9 @@ export const fields = {
 export const formsApp = {
   loginForm: ['email', 'password'],
   registerForm: ['name', 'email', 'password', 'confPassword'],
-  profileForm: ['name', 'email', 'phone', 'identification', 'address', 'website', 'image']
+  profileForm: ['name', 'email', 'phone', 'identification', 'address', 'website', 'image'],
+  recoveryPasswordForm: ['password', 'confPassword'],
+  forgotPasswordForm: ['email']
 };
 
 // Formulario que modifican pass
