@@ -1,10 +1,11 @@
-import CartIcon from '@/icons/cart'
-import UserIcon from '@/icons/user'
-import CircleButton from '../shared/CircleButton'
-import Link from 'next/link';
-import { UserSession } from '@/app/lib/definitions';
-import { getSession } from '@/app/lib/session';
-import SessionMenu from './SessionMenu';
+import CartIcon from "@/icons/cart";
+import UserIcon from "@/icons/user";
+import CircleButton from "../shared/CircleButton";
+import Link from "next/link";
+import { UserSession } from "@/app/lib/definitions";
+import { getSession } from "@/app/lib/session";
+import SessionMenu from "./SessionMenu";
+import arrayNavbarMenu from "@/utils/arrayMenu/arrayNavbarMenu";
 
 const Menu = async () => {
   const session = await getSession();
@@ -12,16 +13,27 @@ const Menu = async () => {
 
   return (
     <div>
-      <div className='fixed z-10 w-full h-16 bg-purple-950/60 backdrop-blur-sm text-white'>
-        <div className='flex h-full items-center justify-between max-w-[1440px] mx-auto px-8'>
+      <div className="fixed z-10 w-full h-16 bg-custom-white backdrop-blur-sm text-custom-black">
+        <div className="flex h-full items-center justify-between max-w-[1440px] mx-auto px-8">
           <Link href={"/"}>
             <h1 className={`font-caveat font-semibold text-4xl`}>
               Delicias Gales
             </h1>
           </Link>
-          <div className='flex justify-center items-center gap-8'>
-            <Link href={'/login'}>
-              <CircleButton className='p-2 rounded-full cursor-pointer hover:bg-purple-950/20'>
+          <div>
+            {arrayNavbarMenu.map((item, index) => (
+              <Link
+                href={item.path}
+                key={index}
+                className="p-2 rounded-full cursor-pointer hover:bg-custom-secondary font-semibold ">
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex justify-center items-center gap-8">
+            <Link href={"/login"}>
+              <CircleButton className="p-2 rounded-full cursor-pointer hover:bg-purple-950/20">
                 <CartIcon className="w-7 h-7" />
               </CircleButton>
             </Link>
@@ -29,8 +41,8 @@ const Menu = async () => {
             {userSession ? (
               <SessionMenu />
             ) : (
-              <Link href={'/login'}>
-                <CircleButton className='p-2 rounded-full cursor-pointer hover:bg-purple-950/20'>
+              <Link href={"/login"}>
+                <CircleButton className="p-2 rounded-full cursor-pointer hover:bg-purple-950/20">
                   <UserIcon className="w-7 h-7" />
                 </CircleButton>
               </Link>
@@ -39,6 +51,6 @@ const Menu = async () => {
         </div>
       </div>
     </div>
-  )
-}
-export default Menu
+  );
+};
+export default Menu;

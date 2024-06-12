@@ -1,10 +1,10 @@
-import { getServerSession } from '@/actions/auth';
-import axios from 'axios';
+import { getServerSession } from "@/actions/auth";
+import axios from "axios";
 
 export const axiosApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -13,7 +13,7 @@ axiosApi.interceptors.request.use(
     const session = await getServerSession();
     const token = session?.token;
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
   },

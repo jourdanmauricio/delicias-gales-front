@@ -17,10 +17,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <link rel="icon" href="next.svg" type="image/x-icon" />
-      <body className={`${caveat.variable} ${inter.variable} antialiased`}>
+      <body
+        className={`${caveat.variable} ${inter.variable} antialiased bg-custom-tertiary`}>
         <Menu />
         {children}
       </body>
     </html>
-  )
+  );
 }
