@@ -60,7 +60,7 @@ const SessionMenu = () => {
           {user.role === Role.CUSTOMER ? (
             <button className='pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Mis pedidos</button>
           ) :
-            <button className='text-left pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Dashboard</button>
+            <Link href={`/dashboard/${user.role}`} className='text-left pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Dashboard</Link>
           }
           <button onClick={handleLogout} className='text-left pb-2 pt-1 px-4 w-full hover:bg-slate-300 rounded-t'>Logout</button>
         </div>

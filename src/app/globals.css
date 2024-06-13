@@ -141,3 +141,10 @@
 .active__content {
   @apply block;
 }
+
+/* ********** */
+/* Animations */
+/* ********** */
+.transition-width {
+  transition: width 0.5s;
+}
