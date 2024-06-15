@@ -7,6 +7,12 @@ export const fields = {
     type: "text",
     required: true,
   },
+  description: {
+    regex: /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑ,]{3,255}$/,
+    msgError: 'Debe tener entre 3 y 255 caracteres',
+    type: "text",
+    required: true,
+  },
   lastname: {
     regex: /^[0-9a-zA-Z\sáéíóúÁÉÍÓÚñÑ]{3,150}$/,
     msgError: 'Debe tener entre 3 y 150 caracteres',
@@ -203,7 +209,8 @@ export const formsApp = {
   registerForm: ['name', 'email', 'password', 'confPassword'],
   profileForm: ['name', 'email', 'phone', 'identification', 'address', 'website', 'image'],
   recoveryPasswordForm: ['password', 'confPassword'],
-  forgotPasswordForm: ['email']
+  forgotPasswordForm: ['email'],
+  editCategoryForm: ['name', 'description', 'image']
 };
 
 // Formulario que modifican pass
