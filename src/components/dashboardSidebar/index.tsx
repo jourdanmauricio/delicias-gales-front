@@ -33,7 +33,7 @@ const DashboardSidebar = () => {
 
       <hr className="mb-4 border-b border-solid border-gray-700" />
 
-      {menuRole[user.role].map((link) =>
+      {user && menuRole[user.role].map((link) =>
 
         <Link
           key={link.id}

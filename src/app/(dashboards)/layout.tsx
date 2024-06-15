@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <link rel="icon" href="next.svg" type="image/x-icon" />
+      {/* <link rel="icon" href="next.svg" type="image/x-icon" /> */}
       <body
         className={`${caveat.variable} ${inter.variable} min-h-screen antialiased bg-custom-tertiary`}>
         <DashboardMenu />

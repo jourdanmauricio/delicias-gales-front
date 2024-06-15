@@ -148,3 +148,22 @@
 .transition-width {
   transition: width 0.5s;
 }
+
+/* ********** */
+/* SwitAlert2 */
+/* ********** */
+
+.swal-delete-buttons {
+  @apply w-full flex justify-evenly;
+}
+
+.swal-delete-buttons .swal2-confirm {
+  @apply mt-4 rounded-lg px-6 py-3 font-bold bg-red-700 text-white border-none;
+  /* order: 2; */
+}
+
+.swal-delete-buttons .swal2-cancel {
+  @apply mt-4 rounded-lg px-6 py-3 font-bold bg-gray-300 hover:bg-gray-300/70 text-gray-700;
+  /* order: 1; */
+}
+
