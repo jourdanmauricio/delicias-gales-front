@@ -1,10 +1,10 @@
 "use client";
-import CircleButton from '@/components/shared/CircleButton'
-import TrashIcon from '@/icons/trash'
 import useDeleteCategory from './useDeleteCategory';
+import TrashIcon from '@/icons/trash';
+
+import CircleButton from '@/components/shared/CircleButton';
 
 const DeleteCategory = ({ categoryId, totalProducts }) => {
-
   const { handleDelete } = useDeleteCategory({ categoryId, totalProducts })
   return (
     <button onClick={handleDelete}>

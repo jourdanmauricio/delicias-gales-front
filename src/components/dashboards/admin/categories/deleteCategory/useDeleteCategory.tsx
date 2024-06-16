@@ -18,8 +18,8 @@ const useDeleteCategory = ({ categoryId, totalProducts }) => {
       return
     }
     Swal.fire({
-      title: 'Eliminar categría',
-      text: '¿Estás seguro de eliminar la categía?',
+      title: 'Eliminar categoría',
+      text: '¿Estás seguro de eliminar la categoría?',
       icon: 'warning',
 
       showCancelButton: true,
@@ -63,7 +63,6 @@ const useDeleteCategory = ({ categoryId, totalProducts }) => {
         icon: 'error'
       });
     })
-
   }
   return { handleDelete }
 }

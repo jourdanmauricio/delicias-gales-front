@@ -1,1 +1,1 @@
-export { default } from '@/components/dashboards/admin/categories/editCatgegory';
+export { default } from '@/components/dashboards/admin/categories/editCategory';

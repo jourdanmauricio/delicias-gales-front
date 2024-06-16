@@ -1,10 +1,9 @@
 import CircleButton from '@/components/shared/CircleButton'
 import EditIcon from '@/icons/edit'
-import TrashIcon from '@/icons/trash'
 import getCategories from '@/utils/api/categories/getCategories'
 import Image from 'next/image'
 import Link from 'next/link'
-import DeleteCategory from './editCatgegory/DeleteCategory'
+import DeleteCategory from './deleteCategory/DeleteCategory'
 
 const Categories = async () => {
   const categories = await getCategories()

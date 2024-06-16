@@ -1,3 +1,4 @@
+import BrandsIcon from '@/icons/brands';
 import CategoriesIcon from '@/icons/categories';
 import HomeIcon from '@/icons/home';
 import OrdersIcon from '@/icons/orders';
@@ -15,18 +16,24 @@ const menuRole = {
     },
     {
       id: 3,
+      name: 'Marcas',
+      href: '/dashboard/admin/brands',
+      icon: BrandsIcon,
+    },
+    {
+      id: 4,
       name: 'Categorías',
       href: '/dashboard/admin/categories',
       icon: CategoriesIcon,
     },
     {
-      id: 4,
+      id: 5,
       name: 'Productos',
       href: '/dashboard/admin/products',
       icon: ProductIcon,
     },
     {
-      id: 5,
+      id: 6,
       name: 'Pedidos',
       href: '/dashboard/admin/orders',
       icon: OrdersIcon,
