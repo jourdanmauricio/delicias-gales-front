@@ -13,8 +13,10 @@
     "jose": "^5.4.0",
     "next": "14.2.3",
     "react": "^18",
+    "react-data-table-component": "^7.6.2",
     "react-dom": "^18",
     "react-international-phone": "^4.3.0",
+    "styled-components": "^6.1.11",
     "sweetalert2": "^11.11.1",
     "zustand": "^4.5.2"
   },

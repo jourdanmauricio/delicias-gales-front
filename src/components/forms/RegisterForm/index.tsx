@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 
 import Link from 'next/link';
 import Spinner2 from '@/components/shared/Spinner2';
@@ -25,7 +25,7 @@ const LoginForm = () => {
             </h1>
 
             <div className="mb-2 flex flex-col">
-              <label className="label-form" htmlFor="email">
+              <label className="label-form" htmlFor="name">
                 Nombre completo
               </label>
               <div className="relative flex items-center justify-center gap-2 rounded-lg border-2 bg-custom-white">

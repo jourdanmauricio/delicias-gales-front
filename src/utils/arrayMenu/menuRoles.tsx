@@ -4,6 +4,7 @@ import HomeIcon from '@/icons/home';
 import OrdersIcon from '@/icons/orders';
 import ProductIcon from '@/icons/product';
 import SettingsIcon from '@/icons/settings';
+import UsersIcon from '@/icons/users';
 
 const menuRole = {
   admin: [
@@ -28,12 +29,18 @@ const menuRole = {
     },
     {
       id: 5,
+      name: 'Usuarios',
+      href: '/dashboard/admin/users',
+      icon: UsersIcon,
+    },
+    {
+      id: 6,
       name: 'Productos',
       href: '/dashboard/admin/products',
       icon: ProductIcon,
     },
     {
-      id: 6,
+      id: 7,
       name: 'Pedidos',
       href: '/dashboard/admin/orders',
       icon: OrdersIcon,

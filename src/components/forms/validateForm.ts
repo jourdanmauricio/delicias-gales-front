@@ -2,8 +2,8 @@
 
 
 export const validatefield = (field: string, value: string) => {
-  // console.log("field", field);
-  // console.log("value", value);
+  console.log("field", field);
+  console.log("value", value);
   // console.log("fields[field].required", (fields[field].required && (!value || value.toString().trim() === '')));
 
   if (fields[field].required && (!value || value.toString().trim() === ''))

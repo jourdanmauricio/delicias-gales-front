@@ -1,3 +1,4 @@
+import { UserStatus } from '@/utils/types/users/userStatus.enum';
 import { Role } from '@/utils/types/users/usersRoles';
 
 export const fields = {
@@ -62,12 +63,12 @@ export const fields = {
     type: "text",
     required: true,
   },
-  // statusCompany: {
-  //   regex: new RegExp(`^(${Object.values(CompanyStatus).join('|')})$`),
-  //   msgError: 'Estado de empresa inválido',
-  //   type: "enum",
-  //   required: true,
-  // },
+  status: {
+    regex: new RegExp(`^(${Object.values(UserStatus).join('|')})$`),
+    msgError: 'Estado de empresa inválido',
+    type: "enum",
+    required: true,
+  },
   email: {
     regex:
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -210,7 +211,8 @@ export const formsApp = {
   profileForm: ['name', 'email', 'phone', 'identification', 'address', 'website', 'image'],
   recoveryPasswordForm: ['password', 'confPassword'],
   forgotPasswordForm: ['email'],
-  editCategoryForm: ['name', 'description', 'image']
+  editCategoryForm: ['name', 'description', 'image'],
+  userForm: ['name', 'email', 'phone', 'identification', 'address', 'website', 'image', 'role', 'status'],
 };
 
 // Formulario que modifican pass

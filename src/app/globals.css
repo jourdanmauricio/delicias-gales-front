@@ -181,3 +181,26 @@
   /* order: 1; */
 }
 
+/* .table {
+  display: table;
+  width: 100%;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.label {
+  font-weight: bold;
+  width: 30%;
+}
+
+.value {
+  width: 70%;
+} */

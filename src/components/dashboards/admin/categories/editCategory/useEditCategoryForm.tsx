@@ -101,7 +101,7 @@ const useEditCategoryForm = ({ category }) => {
       setLoading(false);
       await Swal.fire({
         icon: 'success',
-        title: `Categpría ${data.id === 'new' ? 'creada' : 'modificada'} con éxito`,
+        title: `Categoría ${data.id === 'new' ? 'creada' : 'modificada'} con éxito`,
         showConfirmButton: false,
         width: '450px',
         timer: 1500
