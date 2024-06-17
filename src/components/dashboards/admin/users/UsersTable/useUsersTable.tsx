@@ -125,7 +125,7 @@ const useUsersTable = ({ users }) => {
     {
       name: 'Acciones',
       width: '15%',
-      center: true,
+      // center: true,
       hide: 768,
       cell: (row) => (
         <div className="flex gap-4">
