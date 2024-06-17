@@ -146,7 +146,7 @@ export const fields = {
   website: {
     regex: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
     msgError: 'Url inválida',
-    required: true,
+    required: false,
     type: "text",
   },
   image: {
