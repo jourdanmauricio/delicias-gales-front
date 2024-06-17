@@ -1,13 +1,13 @@
 import CartIcon from "@/icons/cart";
 import UserIcon from "@/icons/user";
-import CircleButton from "../shared/CircleButton";
+import CircleButton from "../../shared/CircleButton";
 import Link from "next/link";
 import { UserSession } from "@/app/lib/definitions";
 import { getSession } from "@/app/lib/session";
-import SessionMenu from "./SessionMenu";
+import SessionMenu from "../SessionMenu";
 import arrayNavbarMenu from "@/utils/arrayMenu/arrayNavbarMenu";
 
-const Menu = async () => {
+const HomeMenu = async () => {
   const session = await getSession();
   const userSession = session?.user as UserSession;
 
@@ -53,4 +53,4 @@ const Menu = async () => {
     </div>
   );
 };
-export default Menu;
+export default HomeMenu;

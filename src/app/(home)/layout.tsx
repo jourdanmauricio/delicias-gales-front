@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 import "@/app/globals.css";
 import { caveat, inter } from '@/app/fonts';
-import Menu from '@/components/Menu/Index';
+import Menu from '@/components/Menu/HomeMenu/Index';
+import HomeMenu from '@/components/Menu/HomeMenu/Index';
 
 export const metadata: Metadata = {
   title: "Delicias Gales",
@@ -19,7 +20,7 @@ export default function RootLayout({
       <link rel="icon" href="next.svg" type="image/x-icon" />
       <body
         className={`${caveat.variable} ${inter.variable} antialiased bg-custom-tertiary`}>
-        <Menu />
+        <HomeMenu />
         {children}
       </body>
     </html>

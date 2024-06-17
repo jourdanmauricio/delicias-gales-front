@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import "@/app/globals.css";
 import { caveat, inter } from '@/app/fonts';
-import DashboardMenu from '@/components/dashboardMenu';
-import DashboardSidebar from '@/components/dashboardSidebar';
+import DashboardMenu from '@/components/Menu/dashboardMenu';
+import DashboardSidebar from '@/components/Menu/dashboardSidebar';
 
 export const metadata: Metadata = {
   title: "Delicias Gales",

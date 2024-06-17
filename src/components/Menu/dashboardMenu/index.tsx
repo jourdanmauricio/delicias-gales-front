@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import CircleButton from '../shared/CircleButton'
-import SessionMenu from '../Menu/SessionMenu'
+import CircleButton from '@/components/shared/CircleButton'
+import SessionMenu from '@/components/Menu/SessionMenu'
 import UserIcon from '@/icons/user'
 import { getSession } from '@/app/lib/session'
 import { UserSession } from '@/app/lib/definitions'
