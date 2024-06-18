@@ -1,4 +1,3 @@
-import { useUserStore } from '@/store/user.store'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
@@ -6,7 +5,8 @@ import Swal from 'sweetalert2'
 import { IUser, initUser, initUserError } from '@/utils/types/users/IUser'
 import { validateForm, validatefield } from '../validateForm'
 import uploadFile from '@/utils/api/files/uploadFile'
-import putUser from '@/utils/api/users/putUser'
+import { HandleChangeProfile, getServerSession } from '@/actions/auth'
+import { UserSession } from '@/app/lib/definitions'
 
 const useProfileForm = () => {
   const [loading, setLoading] = useState(false)
@@ -16,13 +16,18 @@ const useProfileForm = () => {
   const [preview, setPreview] = useState('');
 
   const router = useRouter();
-  const { user, setUser } = useUserStore(state => state)
 
+  const getUser = async () => {
+    const session = await getServerSession();
+    const userSession = session?.user as UserSession;
+    console.log("userSession", userSession)
+    if (userSession) setProfile(userSession);
+
+  }
 
   useEffect(() => {
-    if (user) setProfile(user);
-    console.log("user", user)
-  }, [user])
+    getUser()
+  }, [])
 
   useEffect(() => {
     if (!selectedFile) {
@@ -81,8 +86,7 @@ const useProfileForm = () => {
         data.image = secure_url
       }
 
-      const updUser = await putUser(id, data);
-      setUser(updUser);
+      const updUser = await HandleChangeProfile(id, data);
       setLoading(false);
       Swal.fire({
         icon: 'success',
@@ -101,7 +105,6 @@ const useProfileForm = () => {
         confirmButtonColor: '#222B2D',
       });
     }
-
   }
 
   return { profile, errors, loading, selectedFile, preview, onSelectFile, handleChange, handleSubmit, handleCancel }

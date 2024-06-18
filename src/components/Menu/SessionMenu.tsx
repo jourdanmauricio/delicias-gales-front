@@ -1,19 +1,16 @@
 "use client";
 
 import { HandleLogout } from '@/actions/auth';
-import { useUserStore } from '@/store/user.store';
 import { Role } from '@/utils/types/users/usersRoles';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-const SessionMenu = () => {
+const SessionMenu = ({ user }) => {
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
   const menuRef = useRef<HTMLButtonElement>(null);
-
-  const user = useUserStore(state => state.user)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

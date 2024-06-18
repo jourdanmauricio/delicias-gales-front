@@ -1,11 +1,22 @@
 "use server"
-import { createSession, deleteSession, getSession } from '@/app/lib/session';
+import { createSession, deleteSession, getSession, updateSession } from '@/app/lib/session';
 import postLogin from '@/utils/api/auth/login';
+import putUser from '@/utils/api/users/putUser';
 
 export const HandleLogin = async (credentials) => {
 
   const data = await postLogin(credentials);
   if (!data.error) await createSession(data);
+
+  return data;
+}
+
+export const HandleChangeProfile = async (id, data) => {
+
+  console.log("HandleChangeProfile", id, data)
+
+  const profile = await putUser(id, data);
+  if (!data.error) await updateSession(profile);
 
   return data;
   
