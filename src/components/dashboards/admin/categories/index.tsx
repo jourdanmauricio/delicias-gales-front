@@ -10,7 +10,7 @@ const Categories = async () => {
 
   return (
     <>
-      <header className='pt-16 flex justify-between'>
+      <header className='flex justify-between'>
         <h2>Categorías</h2>
         <Link href='categories/new' className='btn btn-confirm'>Nueva</Link>
       </header>

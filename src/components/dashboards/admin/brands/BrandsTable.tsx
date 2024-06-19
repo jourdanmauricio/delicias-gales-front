@@ -4,7 +4,7 @@ import EditBrand from './editBrand/EditBrand'
 const BrandsTable = ({ brands }) => {
 
   return (
-    <table className="mt-8 min-w-full bg-white shadow-md rounded-lg">
+    <table className="mt-4 min-w-full bg-white shadow-md rounded-lg">
       <thead>
         <tr>
           <th className="py-3 px-4 bg-gray-50 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">Nombre</th>

@@ -9,17 +9,6 @@
 }
 
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-    font-family: var(--font-inter);
-} */
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -55,11 +44,15 @@
 
 /* buttons */
 .btn {
-  @apply mt-4 rounded-lg px-6 py-3 font-bold;
+  @apply rounded-lg px-6 py-2 font-bold;
 }
 
-.btn-confirm {
+/* .btn-confirm {
   @apply bg-custom-fourth text-custom-primary hover:bg-custom-secondary hover:text-custom-primary;
+} */
+
+.btn-confirm {
+  @apply bg-custom-fourth text-white hover:bg-custom-secondary hover:text-custom-primary;
 }
 
 .btn-cancel {
@@ -96,7 +89,7 @@
 
 .gradient-footer{
   background: rgb(39,59,37);
-  background: linear-gradient(36deg, rgba(39,59,37,1) 0%, rgba(25,35,39,1) 100%); 
+  background: linear-gradient(36deg, rgba(39,59,37,1) 0%, rgba(25,35,39,1) 100%);
 }
 
 /*   Tabs   */
@@ -181,26 +174,3 @@
   /* order: 1; */
 }
 
-/* .table {
-  display: table;
-  width: 100%;
-}
-
-.row {
-  display: table-row;
-}
-
-.cell {
-  display: table-cell;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-.label {
-  font-weight: bold;
-  width: 30%;
-}
-
-.value {
-  width: 70%;
-} */

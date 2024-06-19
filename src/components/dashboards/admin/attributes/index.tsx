@@ -7,7 +7,7 @@ const Attributes = async () => {
 
   return (
     <>
-      <header className='pt-16 flex justify-between'>
+      <header className='flex justify-between'>
         <h2>Atributos</h2>
         <NewAttribute />
       </header>

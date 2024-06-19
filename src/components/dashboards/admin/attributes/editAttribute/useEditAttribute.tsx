@@ -17,7 +17,7 @@ const useEditAttribute = ({ attribute }) => {
             <input
               id='name'
               name="name"
-              value=${attribute.name}
+              value="${attribute.name}"
               type="text"
               class="input-form"
               placeholder="Nombre"
@@ -28,10 +28,10 @@ const useEditAttribute = ({ attribute }) => {
             <input
               id='unit'
               name="unit"
-              value=${attribute.unitDefault}
               type="text"
               class="input-form"
               placeholder="Unidad de medida"
+              value="${attribute.unitDefault}"
             />
           </div>
           `,

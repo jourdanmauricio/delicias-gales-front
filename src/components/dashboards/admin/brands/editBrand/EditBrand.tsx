@@ -9,7 +9,7 @@ const EditBranch = ({ brand }) => {
   return (
     <button onClick={handleEdit}>
       <CircleButton className='p-2 rounded-full cursor-pointer hover:bg-purple-950/20'>
-        <EditIcon className='w-6 h-6' />
+        <EditIcon className='w-6 h-6 text-blue-700' />
       </CircleButton>
     </button>
   )

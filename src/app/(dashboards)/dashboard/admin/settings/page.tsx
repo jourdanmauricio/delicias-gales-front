@@ -1,6 +1,1 @@
-const Settings = () => {
-  return (
-    <div className='mt-16'>Settings</div>
-  )
-}
-export default Settings
+export { default } from '@/components/dashboards/admin/settings';
