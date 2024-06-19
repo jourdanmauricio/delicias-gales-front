@@ -2,16 +2,16 @@
 
 import CircleButton from '@/components/shared/CircleButton'
 import EditIcon from '@/icons/edit'
-import useEditBrand from './useEditBrand';
+import useEditAttribute from './useEditAttribute';
 
-const EditBranch = ({ brand }) => {
-  const { handleEdit } = useEditBrand({ brand });
+const EditAttribute = ({ attribute }) => {
+  const { handleEdit } = useEditAttribute({ attribute });
   return (
     <button onClick={handleEdit}>
       <CircleButton className='p-2 rounded-full cursor-pointer hover:bg-purple-950/20'>
-        <EditIcon className='w-6 h-6 text-blue-700' />
+        <EditIcon className='w-6 h-6' />
       </CircleButton>
     </button>
   )
 }
-export default EditBranch
+export default EditAttribute

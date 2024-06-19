@@ -2,12 +2,8 @@ import Link from 'next/link'
 import CircleButton from '@/components/shared/CircleButton'
 import SessionMenu from '@/components/Menu/SessionMenu'
 import UserIcon from '@/icons/user'
-import { getSession } from '@/app/lib/session'
-import { UserSession } from '@/app/lib/definitions'
 
-const DashboardMenu = async () => {
-  const session = await getSession();
-  const userSession = session?.user as UserSession;
+const DashboardMenu = async ({ user }) => {
   return (
     <div>
       <div className="fixed z-10 w-full h-16 bg-custom-white backdrop-blur-sm text-custom-black">
@@ -18,8 +14,8 @@ const DashboardMenu = async () => {
             </h1>
           </Link>
 
-          {userSession ? (
-            <SessionMenu />
+          {user ? (
+            <SessionMenu user={user} />
           ) : (
             <Link href={"/login"}>
               <CircleButton className="p-2 rounded-full cursor-pointer hover:bg-purple-950/20">

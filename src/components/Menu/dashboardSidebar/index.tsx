@@ -4,12 +4,10 @@ import ArrowLeftIcon from '@/icons/arrowLeft';
 import ArrowRightIcon from '@/icons/arrowRight';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useUserStore } from '@/store/user.store';
 import menuRole from '@/utils/arrayMenu/menuRoles';
 
-const DashboardSidebar = () => {
+const DashboardSidebar = ({ user }) => {
   const [minItems, setMinItems] = useState(false);
-  const user = useUserStore(state => state.user)
   const pathname = usePathname()
 
   const handleMinItems = () => {

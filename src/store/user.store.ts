@@ -15,5 +15,5 @@ export const useUserStore = create<State>()(persist((set) => ({
   }),
 }), {
   name: 'user',
-  storage: createJSONStorage(() => sessionStorage)
+  storage: createJSONStorage(() => localStorage)
 }))

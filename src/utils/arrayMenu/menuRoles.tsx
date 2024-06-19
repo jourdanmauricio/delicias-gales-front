@@ -1,10 +1,11 @@
-import BrandsIcon from "@/icons/brands";
-import CategoriesIcon from "@/icons/categories";
-import HomeIcon from "@/icons/home";
-import OrdersIcon from "@/icons/orders";
-import ProductIcon from "@/icons/product";
-import SettingsIcon from "@/icons/settings";
-import UsersIcon from "@/icons/users";
+import AttributesIcon from '@/icons/attributes';
+import BrandsIcon from '@/icons/brands';
+import CategoriesIcon from '@/icons/categories';
+import HomeIcon from '@/icons/home';
+import OrdersIcon from '@/icons/orders';
+import ProductIcon from '@/icons/product';
+import SettingsIcon from '@/icons/settings';
+import UsersIcon from '@/icons/users';
 
 const menuRole = {
   admin: [
@@ -14,6 +15,12 @@ const menuRole = {
       name: "Configuración",
       href: "/dashboard/admin/settings",
       icon: SettingsIcon,
+    },
+    {
+      id: 5,
+      name: 'Usuarios',
+      href: '/dashboard/admin/users',
+      icon: UsersIcon,
     },
     {
       id: 3,
@@ -28,10 +35,10 @@ const menuRole = {
       icon: CategoriesIcon,
     },
     {
-      id: 5,
-      name: "Usuarios",
-      href: "/dashboard/admin/users",
-      icon: UsersIcon,
+      id: 8,
+      name: 'Atributos',
+      href: '/dashboard/admin/attributes',
+      icon: AttributesIcon,
     },
     {
       id: 6,

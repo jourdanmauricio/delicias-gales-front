@@ -7,7 +7,7 @@ const Brands = async () => {
   console.log("brands", brands)
   return (
     <>
-      <header className='pt-16 flex justify-between'>
+      <header className='flex justify-between items-start'>
         <h2>Marcas</h2>
         <NewBrand />
       </header>

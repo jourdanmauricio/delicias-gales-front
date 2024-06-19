@@ -39,6 +39,36 @@ export async function createSession(payload: any) {
   })
 }
 
+export async function updateSession(payload: any) {
+
+  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+  const cookie = cookies().get('session')?.value;
+  const session = await decrypt(cookie);
+
+  console.log("SESSION", session);
+
+  if (session) {
+  //   // Update the existing session data with new profile data
+    const updatedSession = {
+      ...session,
+      user: payload,
+      token: session.token as string
+    };
+
+    console.log("updatedSession", updatedSession);
+    const newSessionToken = await encrypt(updatedSession);
+
+    cookies().set('session', newSessionToken, {
+      httpOnly: true,
+      // secure: true,
+      expires: expiresAt,
+      sameSite: 'lax',
+      path: '/',
+    })
+  }
+}
+
+
 export function deleteSession() {
   cookies().delete('session')
 }

@@ -3,7 +3,7 @@
 import DataTable from 'react-data-table-component';
 import useUsersTable from './useUsersTable';
 import NewEditUser from '../NewEditUser/NewEditUser';
-import { paginationComponentOptions } from '@/components/shared/Table/PaginationComponentOptions';
+import { paginationOptions } from '@/utils/types/tables/PaginationOptions';
 
 const UsersTable = ({ users }) => {
   const { columns, action, ExpandedComponent, hadleSubmit, handleCancel, currentData, loading, errors, handleChange, filteredItems, subHeaderComponentMemo } = useUsersTable({ users });
@@ -18,7 +18,7 @@ const UsersTable = ({ users }) => {
         expandableRows
         expandableRowsComponent={ExpandedComponent}
         pagination
-        paginationComponentOptions={paginationComponentOptions}
+        paginationComponentOptions={paginationOptions}
       />
     }
     {(action === 'NEW' || action === 'EDIT') && (

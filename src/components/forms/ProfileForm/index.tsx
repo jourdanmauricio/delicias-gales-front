@@ -13,6 +13,7 @@ const Profile = () => {
   return (
 
     <main className='pt-20 max-w-[1024px] min-h-screen mx-auto px-10'>
+      Id: {profile.id}
       <form
         id='profile-form'
         className="mt-10"

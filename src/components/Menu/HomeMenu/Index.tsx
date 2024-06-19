@@ -9,7 +9,7 @@ import arrayNavbarMenu from "@/utils/arrayMenu/arrayNavbarMenu";
 
 const HomeMenu = async () => {
   const session = await getSession();
-  const userSession = session?.user as UserSession;
+  const user = session?.user as UserSession;
 
   return (
     <div>
@@ -38,8 +38,8 @@ const HomeMenu = async () => {
               </CircleButton>
             </Link>
 
-            {userSession ? (
-              <SessionMenu />
+            {user ? (
+              <SessionMenu user={user} />
             ) : (
               <Link href={"/login"}>
                 <CircleButton className="p-2 rounded-full cursor-pointer hover:bg-purple-950/20">
