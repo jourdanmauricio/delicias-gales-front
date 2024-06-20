@@ -1,12 +1,14 @@
 import { Actions } from '@/utils/types/tables/actions.enum';
 import useBrands from './useBrands'
 import DataTable from 'react-data-table-component';
-import { TableLoader } from '@/components/shared/Table/TableLoader';
 import { paginationOptions } from '@/utils/types/tables/PaginationOptions';
+import NewEditBrand from './newEditBrands/NewEditBrand';
 
 const Brands = ({ allBrands }) => {
 
-  const { brands, currentData, columns, actionsMenu, action, handleCancel } = useBrands({ allBrands });
+  const { brands, columns, currentData, actionsMenu, action, rowExpand, expandRow, ExpandedComponent, handleRefresh, handleCancel } = useBrands({ allBrands });
+
+  console.log("AllBrands", allBrands)
 
   return (
     <>
@@ -16,19 +18,24 @@ const Brands = ({ allBrands }) => {
         {action === Actions.EDIT && ' / Modificar'}
       </div>
 
-      < DataTable
-        dense
-        title='Marcas'
-        actions={actionsMenu}
-        columns={columns}
-        data={brands}
-        expandableRows
-        //progressPending={pending}
-        // progressComponent={<TableLoader />}
-        // expandableRowsComponent={ExpandedComponent}
-        pagination
-        paginationComponentOptions={paginationOptions}
-      />
+      {action === Actions.VIEW && (
+        < DataTable
+          dense
+          title='Marcas'
+          actions={actionsMenu}
+          columns={columns}
+          data={brands}
+          expandableRows
+          expandableRowsComponent={ExpandedComponent}
+          expandableRowExpanded={row => row === rowExpand}
+          onRowExpandToggled={(bool, row) => expandRow(bool, row)}
+          pagination
+          paginationComponentOptions={paginationOptions}
+        />
+      )}
+      {(action === Actions.NEW || action === Actions.EDIT) && (
+        <NewEditBrand brand={currentData} handleCancel={handleCancel} handleRefresh={handleRefresh} action={action} />
+      )}
     </>
   )
 }
