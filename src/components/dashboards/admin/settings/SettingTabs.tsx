@@ -5,9 +5,12 @@ import { useState } from 'react';
 import Categories from './categories/Categories';
 import Brands from './brands/Brands';
 import Attributes from './attributes/Attributes';
+import AttributesIcon from '@/icons/attributes';
+import BrandsIcon from '@/icons/brands';
+import CategoriesIcon from '@/icons/categories';
 
 
-const SettingsTabs = () => {
+const SettingsTabs = ({ allBrands, allAttributes, allCategories }) => {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -21,10 +24,7 @@ const SettingsTabs = () => {
           onClick={() => toggleTab(1)}
           className={toggleState === 1 ? 'tabs active__tabs' : 'tabs'}
         >
-          {/* <FaCloudUploadAlt
-            color="teal"
-            size={20}
-          /> */}
+          <CategoriesIcon className='w-6 h-6' />
           <span>Categorías</span>
         </div>
 
@@ -32,10 +32,7 @@ const SettingsTabs = () => {
           onClick={() => toggleTab(2)}
           className={toggleState === 2 ? 'tabs active__tabs' : 'tabs'}
         >
-          {/* <FaImages
-            color="green"
-            size={20}
-          /> */}
+          <BrandsIcon className='w-6 h-6' />
           <span>Marcas</span>
         </div>
 
@@ -43,10 +40,7 @@ const SettingsTabs = () => {
           onClick={() => toggleTab(3)}
           className={toggleState === 3 ? 'tabs active__tabs' : 'tabs'}
         >
-          {/* <FaImages
-            color="green"
-            size={20}
-          /> */}
+          <AttributesIcon className='w-6 h-6' />
           <span>Atributos</span>
         </div>
 
@@ -59,13 +53,7 @@ const SettingsTabs = () => {
               : 'tab__content'
           }
         >
-          {/* <UploadImage
-            handleAddPict={handleAddPict}
-            picture={picture}
-            setPicture={setPicture}
-          /> */}
-          {/* {categories} */}
-          <Categories />
+          <Categories allCategories={allCategories} />
         </div>
 
         <div
@@ -75,13 +63,7 @@ const SettingsTabs = () => {
               : 'tab__content'
           }
         >
-          {/* <Gallery
-            images={images}
-            handleDelete={handleDelete}
-            handleSelect={handleSelect}
-            setLoading={setLoading}
-          /> */}
-          <Brands />
+          <Brands allBrands={allBrands} />
         </div>
         <div
           className={
@@ -90,16 +72,8 @@ const SettingsTabs = () => {
               : 'tab__content'
           }
         >
-          {/* <Gallery
-            images={images}
-            handleDelete={handleDelete}
-            handleSelect={handleSelect}
-            setLoading={setLoading}
-          /> */}
-          {/* {attributes} */}
-          <Attributes />
+          <Attributes allAtributes={allAttributes} />
         </div>
-
       </div>
     </div>
   )

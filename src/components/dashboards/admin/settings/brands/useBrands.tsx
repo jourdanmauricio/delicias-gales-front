@@ -2,7 +2,7 @@ import CircleButton from '@/components/shared/CircleButton';
 import EditIcon from '@/icons/edit';
 import PlusIcon from '@/icons/plus';
 import TrashIcon from '@/icons/trash';
-import getBrands from '@/utils/api/brands/getBrands';
+// import getBrands from '@/utils/api/brands/getBrands';
 import newBrand from '@/utils/api/brands/newBrand';
 import removeBrand from '@/utils/api/brands/removeBrand';
 import updBrand from '@/utils/api/brands/updBrand';
@@ -17,22 +17,23 @@ const initBrand = {
   description: '',
 }
 
-const useBrands = () => {
+const useBrands = ({ allBrands }) => {
   const [brands, setBrands] = useState([]);
   const [currentData, setCurrentData] = useState(initBrand);
   const [action, setAction] = useState(Actions.VIEW)
-  const [pending, setPending] = useState(false);
+  // const [pending, setPending] = useState(false);
 
-  const fetchData = async () => {
-    setPending(true);
-    const brands = await getBrands();
-    console.log("Brands", brands)
-    setBrands(brands);
-    setPending(false);
-  }
+  // const fetchData = async () => {
+  //   setPending(true);
+  //   const brands = await getBrands();
+  //   console.log("Brands", brands)
+  //   setBrands(brands);
+  //   setPending(false);
+  // }
   useEffect(() => {
-    fetchData()
-  }, [])
+    //fetchData()
+    setBrands(allBrands);
+  }, [allBrands])
 
   useEffect(() => {
     if (action === Actions.NEW || action === Actions.EDIT) {
@@ -268,6 +269,6 @@ const useBrands = () => {
   }
 
 
-  return { brands, currentData, columns, actionsMenu, action, pending, handleCancel }
+  return { brands, currentData, columns, actionsMenu, action, handleCancel }
 }
 export default useBrands

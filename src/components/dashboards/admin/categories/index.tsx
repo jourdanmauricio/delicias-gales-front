@@ -15,7 +15,7 @@ const Categories = async () => {
         <Link href='categories/new' className='btn btn-confirm'>Nueva</Link>
       </header>
 
-      <section className='pt-16 "max-w-[1024px] my-0 mx-auto flex items-center justify-center gap-8 flex-wrap'>
+      <section className='max-w-[1024px] my-0 mx-auto flex items-center justify-center gap-8 flex-wrap'>
         {categories.map((category) =>
           <article key={category.id} className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden min-w-[250px] w-full">
             <Image width={200} height={250} className="w-full h-48 object-cover" src={category.image} alt="Product Thumbnail" />

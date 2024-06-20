@@ -13,7 +13,7 @@ const EditCategoria = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <header className='pt-16'>
+      <header className=''>
         <Link href="./../categories">Categorías</Link> / {params.id === 'new' ? 'Nueva' : 'Modificar'}
       </header>
       <EditCategoryForm category={category} />
