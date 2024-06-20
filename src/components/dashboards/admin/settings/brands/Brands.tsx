@@ -4,9 +4,9 @@ import DataTable from 'react-data-table-component';
 import { TableLoader } from '@/components/shared/Table/TableLoader';
 import { paginationOptions } from '@/utils/types/tables/PaginationOptions';
 
-const Brands = () => {
+const Brands = ({ allBrands }) => {
 
-  const { brands, currentData, columns, actionsMenu, action, pending, handleCancel } = useBrands();
+  const { brands, currentData, columns, actionsMenu, action, handleCancel } = useBrands({ allBrands });
 
   return (
     <>
@@ -23,8 +23,8 @@ const Brands = () => {
         columns={columns}
         data={brands}
         expandableRows
-        progressPending={pending}
-        progressComponent={<TableLoader />}
+        //progressPending={pending}
+        // progressComponent={<TableLoader />}
         // expandableRowsComponent={ExpandedComponent}
         pagination
         paginationComponentOptions={paginationOptions}

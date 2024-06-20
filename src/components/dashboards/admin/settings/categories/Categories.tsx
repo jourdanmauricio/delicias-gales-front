@@ -2,15 +2,15 @@
 
 import DataTable from 'react-data-table-component';
 
-import { TableLoader } from '@/components/shared/Table/TableLoader';
+// import { TableLoader } from '@/components/shared/Table/TableLoader';
 import { paginationOptions } from '@/utils/types/tables/PaginationOptions';
 import useCategories from './useCategories';
 import NewEditCategory from './newEditCategory/NewEditCategory';
 import { Actions } from '@/utils/types/tables/actions.enum';
 
 
-const Categories = () => {
-  const { categories, currentData, columns, actionsMenu, action, pending, rowExpand, expandRow, ExpandedComponent, handleCancel, handleRefresh } = useCategories();
+const Categories = ({ allCategories }) => {
+  const { categories, currentData, columns, actionsMenu, action, rowExpand, expandRow, ExpandedComponent, handleCancel, handleRefresh } = useCategories({ allCategories });
 
   return (
     <>
@@ -27,8 +27,8 @@ const Categories = () => {
           actions={actionsMenu}
           columns={columns}
           data={categories}
-          progressPending={pending}
-          progressComponent={<TableLoader />}
+          // progressPending={pending}
+          // progressComponent={<TableLoader />}
           expandableRows
           expandableRowsComponent={ExpandedComponent}
           expandableRowExpanded={row => row === rowExpand}

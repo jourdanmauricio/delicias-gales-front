@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 import { Actions } from '@/utils/types/tables/actions.enum';
 import CircleButton from '@/components/shared/CircleButton';
-import getCategories from '@/utils/api/categories/getCategories';
+// import getCategories from '@/utils/api/categories/getCategories';
 import removeCategory from '@/utils/api/categories/removeCategory';
 import EditIcon from '@/icons/edit';
 import PlusIcon from '@/icons/plus';
@@ -17,23 +17,24 @@ const initCat = {
   image: ''
 }
 
-const useCategories = () => {
+const useCategories = ({ allCategories }) => {
 
   const [categories, setCategories] = useState([]);
   const [currentData, setCurrentData] = useState(initCat);
   const [action, setAction] = useState(Actions.VIEW)
-  const [pending, setPending] = useState(false);
+  // const [pending, setPending] = useState(false);
   const [rowExpand, setRowExpand] = useState({});
 
-  const fetchData = async () => {
-    setPending(true);
-    const categories = await getCategories();
-    setCategories(categories);
-    setPending(false);
-  }
+  // const fetchData = async () => {
+  //   setPending(true);
+  //   const categories = await getCategories();
+  //   setCategories(categories);
+  //   setPending(false);
+  // }
   useEffect(() => {
-    fetchData()
-  }, [])
+    // fetchData()
+    setCategories(allCategories);
+  }, [allCategories])
 
   useEffect(() => {
     if (action === Actions.DELETE) {
@@ -233,6 +234,6 @@ const useCategories = () => {
     (bool === true) ? setRowExpand(row) : setRowExpand({})
   };
 
-  return { categories, currentData, columns, actionsMenu, action, pending, rowExpand, expandRow, ExpandedComponent, handleCancel, handleRefresh }
+  return { categories, currentData, columns, actionsMenu, action, rowExpand, expandRow, ExpandedComponent, handleCancel, handleRefresh }
 }
 export default useCategories

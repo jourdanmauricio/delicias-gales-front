@@ -2,14 +2,14 @@ import CircleButton from '@/components/shared/CircleButton';
 import EditIcon from '@/icons/edit';
 import PlusIcon from '@/icons/plus';
 import TrashIcon from '@/icons/trash';
-import getAttributes from '@/utils/api/attributes/getAttributes';
+// import getAttributes from '@/utils/api/attributes/getAttributes';
 import newAttribute from '@/utils/api/attributes/newAttribute';
 import removeAttribute from '@/utils/api/attributes/removeAttibute';
 import updAttribute from '@/utils/api/attributes/updAttribute';
-import getBrands from '@/utils/api/brands/getBrands';
-import newBrand from '@/utils/api/brands/newBrand';
-import removeBrand from '@/utils/api/brands/removeBrand';
-import updBrand from '@/utils/api/brands/updBrand';
+// import getBrands from '@/utils/api/brands/getBrands';
+// import newBrand from '@/utils/api/brands/newBrand';
+// import removeBrand from '@/utils/api/brands/removeBrand';
+// import updBrand from '@/utils/api/brands/updBrand';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import { useEffect, useMemo, useState } from 'react';
 import Swal from 'sweetalert2';
@@ -20,22 +20,23 @@ const initAttribute = {
   unitDefault: '',
 }
 
-const useAttributes = () => {
+const useAttributes = ({ allAtributes }) => {
   const [attributes, setAttributes] = useState([]);
   const [currentData, setCurrentData] = useState(initAttribute);
   const [action, setAction] = useState(Actions.VIEW)
-  const [pending, setPending] = useState(false);
+  // const [pending, setPending] = useState(false);
 
-  const fetchData = async () => {
-    setPending(true);
-    const attributes = await getAttributes();
-    console.log("attributes", attributes)
-    setAttributes(attributes);
-    setPending(false);
-  }
+  // const fetchData = async () => {
+  //   setPending(true);
+  //   const attributes = await getAttributes();
+  //   console.log("attributes", attributes)
+  //   setAttributes(attributes);
+  //   setPending(false);
+  // }
   useEffect(() => {
-    fetchData()
-  }, [])
+    //fetchData()
+    setAttributes(allAtributes);
+  }, [allAtributes])
 
   useEffect(() => {
     if (action === Actions.NEW || action === Actions.EDIT) {
@@ -293,6 +294,6 @@ const useAttributes = () => {
   }
 
 
-  return { attributes, currentData, columns, actionsMenu, action, pending, handleCancel }
+  return { attributes, currentData, columns, actionsMenu, action, handleCancel }
 }
 export default useAttributes
