@@ -1,34 +1,33 @@
-import { useEffect, useMemo, useState } from 'react'
-import Swal from 'sweetalert2';
-
-import { Actions } from '@/utils/types/tables/actions.enum';
 import CircleButton from '@/components/shared/CircleButton';
-import getCategories from '@/utils/api/categories/getCategories';
-import removeCategory from '@/utils/api/categories/removeCategory';
 import EditIcon from '@/icons/edit';
 import PlusIcon from '@/icons/plus';
 import TrashIcon from '@/icons/trash';
-import Image from 'next/image';
+import getBrands from '@/utils/api/brands/getBrands';
+import newBrand from '@/utils/api/brands/newBrand';
+import removeBrand from '@/utils/api/brands/removeBrand';
+import updBrand from '@/utils/api/brands/updBrand';
+import { Actions } from '@/utils/types/tables/actions.enum';
+import { useEffect, useMemo, useState } from 'react';
+import Swal from 'sweetalert2';
 
-const initCat = {
+const initBrand = {
   id: '',
   name: '',
+  image: '',
   description: '',
-  image: ''
 }
 
-const useCategories = () => {
-
-  const [categories, setCategories] = useState([]);
-  const [currentData, setCurrentData] = useState(initCat);
+const useBrands = () => {
+  const [brands, setBrands] = useState([]);
+  const [currentData, setCurrentData] = useState(initBrand);
   const [action, setAction] = useState(Actions.VIEW)
   const [pending, setPending] = useState(false);
-  const [rowExpand, setRowExpand] = useState({});
 
   const fetchData = async () => {
     setPending(true);
-    const categories = await getCategories();
-    setCategories(categories);
+    const brands = await getBrands();
+    console.log("Brands", brands)
+    setBrands(brands);
     setPending(false);
   }
   useEffect(() => {
@@ -36,6 +35,9 @@ const useCategories = () => {
   }, [])
 
   useEffect(() => {
+    if (action === Actions.NEW || action === Actions.EDIT) {
+      handleNewEdit();
+    }
     if (action === Actions.DELETE) {
       handleDelete();
     }
@@ -44,16 +46,10 @@ const useCategories = () => {
 
   const handleCancel = () => {
     setAction(Actions.VIEW);
-    setCurrentData(initCat)
+    setCurrentData(initBrand)
   }
 
   const columns = [
-    {
-      name: 'Imagen',
-      width: '122px',
-      hide: 768,
-      cell: row => <Image className='w-full h-[90px] object-cover' width={90} height={90} src={row.image} alt={row.name} />,
-    },
     {
       name: 'Nombre',
       selector: row => row.name,
@@ -93,9 +89,74 @@ const useCategories = () => {
     },
   ]
 
+  const handleNewEdit = () => {
+    console.log("handleNewEdit action", action)
+
+    Swal.fire({
+      title: 'Nueva marca',
+      input: 'text',
+      inputLabel: 'Nombre',
+      inputValue: currentData.name,
+      inputPlaceholder: 'Ingrese el nombre',
+      showCancelButton: true,
+      confirmButtonText: action === Actions.NEW ? 'Crear' : 'Modificar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        actions: 'swal-edit-buttons',
+      },
+      didOpen: () => {
+        const confirmButton = Swal.getConfirmButton();
+        const cancelButton = Swal.getCancelButton();
+        const actionsContainer = confirmButton.parentElement;
+        actionsContainer.appendChild(cancelButton);
+        actionsContainer.appendChild(confirmButton);
+      },
+      inputValidator: (value) => {
+        if (!value) {
+          return 'El nombre es obligatorio'
+        }
+      },
+      preConfirm: async (value) => {
+        Swal.showLoading();
+
+        return new Promise(async (resolve, reject) => {
+          try {
+            let brand;
+            (action === Actions.NEW)
+              ? brand = await newBrand({ name: value })
+              : brand = await updBrand(currentData.id, { name: value })
+            resolve(brand);
+          } catch (error) {
+            reject(new Error(error));
+          }
+        });
+      },
+      allowOutsideClick: () => !Swal.isLoading() // Deshabilitar clics fuera del modal 
+    }).then((result) => {
+
+      console.log("Result", result, action)
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Marca creada',
+          icon: 'success'
+        });
+        handleRefresh(result.value);
+      }
+      if (result.isDismissed) handleCancel()
+
+    }).catch((error) => {
+      Swal.fire({
+        title: 'Error',
+        text: error,
+        icon: 'error'
+      });
+    })
+
+  }
+
   const onNew = () => {
-    setCurrentData(initCat);
-    setAction(Actions.NEW)
+    setCurrentData(initBrand);
+    setAction(Actions.NEW);
   }
 
   const onEdit = (row) => {
@@ -114,7 +175,7 @@ const useCategories = () => {
     if (row.productCount > 0) {
       Swal.fire({
         title: 'Error',
-        text: "La categoría posee productos",
+        text: "La marca posee productos",
         icon: 'error'
       });
       handleCancel()
@@ -124,8 +185,8 @@ const useCategories = () => {
 
   const handleDelete = () => {
     Swal.fire({
-      title: 'Eliminar categoría',
-      text: '¿Estás seguro de eliminar la categoría?',
+      title: 'Eliminar marca',
+      text: '¿Estás seguro de eliminar la marca?',
       icon: 'warning',
 
       showCancelButton: true,
@@ -146,8 +207,8 @@ const useCategories = () => {
 
         return new Promise((resolve, reject) => {
           try {
-            removeCategory(currentData.id);
-            resolve(true);
+            const brand = removeBrand(currentData.id);
+            resolve(brand);
           } catch (error) {
             reject(new Error(error));
           }
@@ -157,11 +218,12 @@ const useCategories = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          title: 'Categoría eliminada',
+          title: 'Marca eliminada',
           icon: 'success'
         });
+        handleRefresh(result.value);
       }
-      handleRefresh(currentData);
+      if (result.isDismissed) handleCancel()
 
     }).catch((error) => {
       Swal.fire({
@@ -183,56 +245,29 @@ const useCategories = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const ExpandedComponent = ({ data }) => <div className='p-8 flex flex-col gap-4 bg-gray-300'>
-    <div className="flex gap-4 justify-end md:hidden">
-      <div
-        onClick={() => onDelete(data)}
-        className="btn-icon"
-      >
-        <CircleButton className='p-2 rounded-full cursor-pointer hover:bg-purple-950/20'>
-          <TrashIcon className="text-red-700 w-6 h-6" />
-        </CircleButton>
-      </div>
-      <div
-        onClick={() => onEdit(data)}
-        className="btn-icon"
-      >
-        <CircleButton className='py-2 rounded-full cursor-pointer hover:bg-purple-950/20'>
-          <EditIcon className="text-blue-700 w-6 h-6" />
-        </CircleButton>
-      </div>
-    </div>
-    <p>Nombre: {data.name}</p>
-    <p>Cantidad de productos: {data.productCount}</p>
-    <p>Descripción: {data.description}</p>
-    <Image className='w-[150px] h-[150px] object-cover mx-auto' height={150} width={150} src={data.image} alt={data.name} />
-  </div>
+  const handleRefresh = (value) => {
 
-
-  const handleRefresh = (cat) => {
+    console.log("handleRefresh", action, value)
 
     switch (action) {
       case Actions.NEW:
-        setCategories([...categories, { ...cat, productCount: 0 }])
+        setBrands([...brands, { ...value, productCount: 0 }])
         break;
       case Actions.EDIT:
-        const newCat = categories.map((category) => (category.id === cat.id ? { ...cat, productCount: category.productCount } : category))
-        setCategories(newCat)
+        const newValue = brands.map((brand) => (brand.id === value.id ? { ...value, productCount: brand.productCount } : brand))
+        setBrands(newValue)
         break;
       case Actions.DELETE:
-        const newCategories = categories.filter((category) => category.id !== cat.id);
-        setCategories(newCategories);
+        const newbrands = brands.filter((brand) => brand.id !== value.id);
+        setBrands(newbrands);
         break;
     }
 
     setAction(Actions.VIEW);
-    setCurrentData(initCat);
+    setCurrentData(initBrand);
   }
 
-  const expandRow = (bool, row) => {
-    (bool === true) ? setRowExpand(row) : setRowExpand({})
-  };
 
-  return { categories, currentData, columns, actionsMenu, action, pending, rowExpand, expandRow, ExpandedComponent, handleCancel, handleRefresh }
+  return { brands, currentData, columns, actionsMenu, action, pending, handleCancel }
 }
-export default useCategories
+export default useBrands

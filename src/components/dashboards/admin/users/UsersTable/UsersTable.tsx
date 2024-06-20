@@ -6,7 +6,7 @@ import NewEditUser from '../NewEditUser/NewEditUser';
 import { paginationOptions } from '@/utils/types/tables/PaginationOptions';
 
 const UsersTable = ({ users }) => {
-  const { columns, action, ExpandedComponent, hadleSubmit, handleCancel, currentData, loading, errors, handleChange, filteredItems, subHeaderComponentMemo } = useUsersTable({ users });
+  const { columns, action, ExpandedComponent, hadleSubmit, handleCancel, rowExpand, expandRow, currentData, loading, errors, handleChange, filteredItems, subHeaderComponentMemo } = useUsersTable({ users });
   return (<>
     {action === 'VIEW' &&
       < DataTable
@@ -17,6 +17,8 @@ const UsersTable = ({ users }) => {
         data={filteredItems}
         expandableRows
         expandableRowsComponent={ExpandedComponent}
+        expandableRowExpanded={row => row === rowExpand}
+        onRowExpandToggled={(bool, row) => expandRow(bool, row)}
         pagination
         paginationComponentOptions={paginationOptions}
       />

@@ -33,6 +33,7 @@ const useUsersTable = ({ users }) => {
   const [loading, setLoading] = useState(false)
   const [filterText, setFilterText] = useState('');
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+  const [rowExpand, setRowExpand] = useState({});
 
   const filteredItems = data.filter(
     item =>
@@ -247,6 +248,10 @@ const useUsersTable = ({ users }) => {
     );
   }, [filterText, resetPaginationToggle]);
 
-  return { data, columns, action, currentData, loading, ExpandedComponent, hadleSubmit, handleCancel, errors, handleChange, filteredItems, subHeaderComponentMemo }
+  const expandRow = (bool, row) => {
+    (bool === true) ? setRowExpand(row) : setRowExpand({})
+  };
+
+  return { data, columns, action, currentData, loading, rowExpand, expandRow, ExpandedComponent, hadleSubmit, handleCancel, errors, handleChange, filteredItems, subHeaderComponentMemo }
 }
 export default useUsersTable
