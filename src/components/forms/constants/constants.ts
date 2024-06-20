@@ -212,6 +212,7 @@ export const formsApp = {
   recoveryPasswordForm: ['password', 'confPassword'],
   forgotPasswordForm: ['email'],
   editCategoryForm: ['name', 'description', 'image'],
+  editBrandForm: ['name', 'description', 'image'],
   userForm: ['name', 'email', 'phone', 'identification', 'address', 'website', 'image', 'role', 'status'],
 };
 

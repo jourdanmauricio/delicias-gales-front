@@ -66,7 +66,7 @@ const useNewEditBrand = ({ brand, action, handleRefresh }) => {
     console.log("Submit")
     event.preventDefault();
 
-    const errors = validateForm(data, 'editbrandForm');
+    const errors = validateForm(data, 'editBrandForm');
     const valuesFormError = Object.values(errors);
     if (valuesFormError.some((el) => el !== null)) {
       setErrors(errors)
