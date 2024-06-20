@@ -1,14 +1,13 @@
 "use client";
+
 import { useState } from 'react';
+
 import Categories from './categories/Categories';
+import Brands from './brands/Brands';
+import Attributes from './attributes/Attributes';
 
 
 const SettingsTabs = () => {
-  const [loading, setLoading] = useState(false);
-  const [images, setImages] = useState(null);
-  const [picture, setPicture] = useState(null);
-  // const user = useUserStore((state) => state.user);
-
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -82,10 +81,8 @@ const SettingsTabs = () => {
             handleSelect={handleSelect}
             setLoading={setLoading}
           /> */}
-          {/* {brands} */}
-          Brtandas
+          <Brands />
         </div>
-
         <div
           className={
             toggleState === 3
@@ -100,7 +97,7 @@ const SettingsTabs = () => {
             setLoading={setLoading}
           /> */}
           {/* {attributes} */}
-          ATTRT
+          <Attributes />
         </div>
 
       </div>

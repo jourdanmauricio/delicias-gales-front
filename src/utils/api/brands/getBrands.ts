@@ -1,6 +1,6 @@
 import { axiosApi } from '../api';
 
-const getBrands = async (url?: string) => {
+const getBrands = async () => {
   try {
     const response = await axiosApi.get('/brands');
 
