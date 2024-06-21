@@ -1,8 +1,10 @@
 import { axiosApi } from '../api';
 
-const getBrands = async () => {
+const getProduct = async (id: string) => {
+
+  console.log("getCategory", id)
   try {
-    const response = await axiosApi.get('/brands');
+    const response = await axiosApi.get(`/products/${id}`);
 
     return response.data;
   } catch (error: any) {
@@ -16,4 +18,4 @@ const getBrands = async () => {
   }
 };
 
-export default getBrands;
+export default getProduct;

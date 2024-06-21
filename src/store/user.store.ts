@@ -2,7 +2,6 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { create } from 'zustand';
 import { IUser } from '@/utils/types/users/IUser';
 
-
 interface State {
   user: IUser;
   setUser: (user: IUser) => void;

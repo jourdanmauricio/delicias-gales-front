@@ -1,8 +1,8 @@
 import { axiosApi } from '../api';
 
-const getBrands = async () => {
+const getProducts = async () => {
   try {
-    const response = await axiosApi.get('/brands');
+    const response = await axiosApi.get('/products');
 
     return response.data;
   } catch (error: any) {
@@ -16,4 +16,4 @@ const getBrands = async () => {
   }
 };
 
-export default getBrands;
+export default getProducts;

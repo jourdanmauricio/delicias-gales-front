@@ -12,7 +12,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className="relative h-screen w-full pt-16">
+      <div className="relative h-screen w-full">
         <div className="flex justify-center items-center h-full w-full">
           <form
             noValidate

@@ -5,9 +5,7 @@ const Users = async () => {
   const users = await getAllUsers();
   console.log("users", users)
   return (
-    <div className='pt-16'>
-      <UsersTable users={users} />
-    </div>
+    <UsersTable users={users} />
   )
 }
 export default Users;

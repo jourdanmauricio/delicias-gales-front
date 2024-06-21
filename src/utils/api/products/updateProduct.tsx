@@ -1,9 +1,10 @@
 import { axiosApi } from '../api';
 
-const getBrands = async () => {
+const updateProduct = async (id: string, changes) => {
   try {
-    const response = await axiosApi.get('/brands');
-
+    const response = await axiosApi.put(
+      `/products/${id}`, changes
+    );
     return response.data;
   } catch (error: any) {
     let message = '';
@@ -16,4 +17,4 @@ const getBrands = async () => {
   }
 };
 
-export default getBrands;
+export default updateProduct;

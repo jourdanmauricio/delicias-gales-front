@@ -123,7 +123,7 @@
   @apply grow bg-white;
 }
 .tab__content {
-  @apply bg-white pb-5 py-0 px-5 w-full h-full hidden;
+  @apply bg-white pb-5 py-0 w-full h-full hidden;
 }
 .tab__content h2 {
   @apply pb-1 pt-0 px-0;

@@ -3,8 +3,8 @@ import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 
 import { validateForm, validatefield } from '@/components/forms/validateForm';
-import { UserStatus, tradStatus } from '@/utils/types/users/userStatus.enum';
-import { Role, tradRoles } from '@/utils/types/users/usersRoles';
+
+import { Role } from '@/utils/types/users/usersRoles';
 import { FilterComponent } from '@/components/shared/Table/FilterComponent';
 import createUser from '@/utils/api/users/createUser';
 import putUser from '@/utils/api/users/putUser';
@@ -12,6 +12,11 @@ import CircleButton from '@/components/shared/CircleButton';
 import EditIcon from '@/icons/edit';
 import PlusIcon from '@/icons/plus';
 import TrashIcon from '@/icons/trash';
+import Image from 'next/image';
+import { ProductStatus, tradStatus } from '@/utils/types/products/productStatus.enun';
+import getProduct from '@/utils/api/products/getProduct';
+import { useProductStore } from '@/store/product.store';
+import { Actions } from '@/utils/types/tables/actions.enum';
 
 const intialUser = {
   address: '',
@@ -21,19 +26,20 @@ const intialUser = {
   registerDate: null,
   name: '',
   phone: '',
-  status: UserStatus.ACTIVE,
+  status: ProductStatus.ACTIVE,
   role: Role.SELLER
 }
 
-const useUsersTable = ({ users }) => {
+const useProductsTable = ({ products }) => {
   const [data, setData] = useState([]);
-  const [action, setAction] = useState('VIEW');
-  const [currentData, setCurrentData] = useState(intialUser);
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false)
   const [filterText, setFilterText] = useState('');
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [rowExpand, setRowExpand] = useState({});
+
+  const { product, action, setAction, setProduct } = useProductStore(state => state)
+  const state = useProductStore(state => state)
+
+  console.log("state", state)
 
   const filteredItems = data.filter(
     item =>
@@ -44,8 +50,8 @@ const useUsersTable = ({ users }) => {
   const router = useRouter();
 
   useEffect(() => {
-    setData(users);
-  }, [users])
+    setData(products);
+  }, [products])
 
   const ExpandedComponent = ({ data }) => <div>
     <div className="flex justify-end gap-4 md:hidden">
@@ -67,60 +73,51 @@ const useUsersTable = ({ users }) => {
       </div>
     </div>
     <div className="bg-gray-300 rounded text-sm m-4 p-4 border border-gray-500 shadow-xl grid grid-cols-1 gap-2 md:grid-cols-2">
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Email:</span>
-        <span>{data.email}</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Documento:</span>
-        <span>{data.identification}</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Teléfono:</span>
-        <span>{data.phone}</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Estado:</span>
-        <span>{tradStatus(data.status)}</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Tipo cliente:</span>
-        <span>{data.customerType}</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Fecha registro:</span>
-        <span>{data.registerDate.split('T')[0]}</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Dirección:</span>
-        <span>{data.address}</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <span className="font-semibold">Website:</span>
-        <span>{data.website}</span>
-      </div>
+      <p>{data.name}</p>
+
       <div className="grid grid-cols-2">
         <span className="font-semibold">Imagen:</span>
-        <span>{data.image}</span>
+        <Image src={data.thumbnail} alt={data.name} height={150} width={150} />
       </div>
     </div>
   </div>
 
   const columns = [
     {
+      name: 'Imagen',
+      width: '122px',
+      hide: 768,
+      cell: row => <Image className='w-full h-[90px] object-cover' width={90} height={90} src={row.thumbnail} alt={row.name} />
+    },
+    {
       name: 'Nombre',
       selector: row => row.name,
       sortable: true,
     },
     {
-      name: 'Teléfono',
-      selector: row => row.phone,
+      name: 'Código',
+      selector: row => row.cod,
       sortable: true,
       hide: 768
     },
     {
-      name: 'Role',
-      selector: row => tradRoles(row.role),
+      name: 'Precio May',
+      selector: row => row.wholesalePrice,
+      sortable: true,
+    },
+    {
+      name: 'Precio Min',
+      selector: row => row.retailPrice,
+      sortable: true,
+    },
+    {
+      name: 'Stock',
+      selector: row => row.stock,
+      sortable: true,
+    },
+    {
+      name: 'Estado',
+      selector: row => tradStatus(row.status),
       sortable: true,
     },
     {
@@ -152,77 +149,25 @@ const useUsersTable = ({ users }) => {
   ]
 
   const handleDelete = (row) => {
-    setCurrentData(row);
+    setProduct(row);
     // verificar Compras!!!!
   }
 
   const onNew = () => {
-    setCurrentData(intialUser);
-    setAction('NEW');
+    setProduct(null);
+    setAction(Actions.NEW)
+    // setAction('NEW');
   };
 
-  const handleCancel = () => {
-    setCurrentData(intialUser);
-    setAction('VIEW');
-  }
-
-  const onEdit = (row) => {
-    setCurrentData(row);
-    setAction('EDIT');
+  const onEdit = async (row) => {
+    const product = await getProduct(row.id);
+    setProduct(product);
+    setAction(Actions.EDIT)
+    // setCurrentData(row);
+    // setAction('EDIT');
   };
 
-  const handleChange = (name: string, value: string) => {
-    setCurrentData({ ...currentData, [name]: value })
 
-    const error = validatefield(name, value);
-    setErrors({
-      ...errors,
-      [name]: error,
-    });
-  }
-
-  const hadleSubmit = async (e) => {
-    e.preventDefault();
-
-    const errors = validateForm(currentData, 'userForm');
-
-    const valuesFormError = Object.values(errors);
-    if (valuesFormError.some((el) => el !== null)) {
-      setErrors(errors)
-      return;
-    }
-
-    try {
-      setLoading(true);
-      const { id, ...data } = currentData;
-      delete data.registerDate;
-      if (action === 'NEW') {
-        await createUser(data);
-      } else {
-        await putUser(id, data);
-      }
-
-      router.push('/dashboard/admin/users');
-      router.refresh();
-      setLoading(false);
-      await Swal.fire({
-        icon: 'success',
-        title: `Usuario ${action === 'NEW' ? 'creado' : 'modificado'} con éxito`,
-        showConfirmButton: false,
-        width: '450px',
-        timer: 1500
-      });
-
-    } catch (error) {
-      setLoading(false);
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: error,
-      });
-    }
-
-  }
 
   const subHeaderComponentMemo = useMemo(() => {
     const handleClear = () => {
@@ -246,12 +191,13 @@ const useUsersTable = ({ users }) => {
         </button>
       </>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterText, resetPaginationToggle]);
 
   const expandRow = (bool, row) => {
     (bool === true) ? setRowExpand(row) : setRowExpand({})
   };
 
-  return { data, columns, action, currentData, loading, rowExpand, expandRow, ExpandedComponent, hadleSubmit, handleCancel, errors, handleChange, filteredItems, subHeaderComponentMemo }
+  return { columns, action, ExpandedComponent, rowExpand, expandRow, filteredItems, subHeaderComponentMemo }
 }
-export default useUsersTable
+export default useProductsTable

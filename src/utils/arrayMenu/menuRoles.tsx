@@ -22,24 +22,24 @@ const menuRole = {
       href: '/dashboard/admin/users',
       icon: UsersIcon,
     },
-    {
-      id: 3,
-      name: "Marcas",
-      href: "/dashboard/admin/brands",
-      icon: BrandsIcon,
-    },
-    {
-      id: 4,
-      name: "Categorías",
-      href: "/dashboard/admin/categories",
-      icon: CategoriesIcon,
-    },
-    {
-      id: 8,
-      name: 'Atributos',
-      href: '/dashboard/admin/attributes',
-      icon: AttributesIcon,
-    },
+    // {
+    //   id: 3,
+    //   name: 'Marcas',
+    //   href: '/dashboard/admin/brands',
+    //   icon: BrandsIcon,
+    // },
+    // {
+    //   id: 4,
+    //   name: 'Categorías',
+    //   href: '/dashboard/admin/categories',
+    //   icon: CategoriesIcon,
+    // },
+    // {
+    //   id: 8,
+    //   name: 'Atributos',
+    //   href: '/dashboard/admin/attributes',
+    //   icon: AttributesIcon,
+    // },
     {
       id: 6,
       name: "Productos",
