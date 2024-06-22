@@ -9,11 +9,11 @@ import UsersIcon from '@/icons/users';
 
 const menuRole = {
   admin: [
-    { id: 1, name: 'Home', href: '/dashboard/admin', icon: HomeIcon },
+    { id: 1, name: "Home", href: "/dashboard/admin", icon: HomeIcon },
     {
       id: 2,
-      name: 'Configuración',
-      href: '/dashboard/admin/settings',
+      name: "Configuración",
+      href: "/dashboard/admin/settings",
       icon: SettingsIcon,
     },
     {
@@ -42,15 +42,48 @@ const menuRole = {
     // },
     {
       id: 6,
-      name: 'Productos',
-      href: '/dashboard/admin/products',
+      name: "Productos",
+      href: "/dashboard/admin/products",
       icon: ProductIcon,
     },
     {
       id: 7,
-      name: 'Pedidos',
-      href: '/dashboard/admin/orders',
+      name: "Pedidos",
+      href: "/dashboard/admin/orders",
       icon: OrdersIcon,
+    },
+  ],
+  seller: [
+    { id: 1, name: "Home", href: "/dashboard/admin", icon: HomeIcon },
+    {
+      id: 2,
+      name: "Configuración",
+      href: "/",
+      icon: SettingsIcon,
+    },
+    {
+      id: 7,
+      name: "Pedidos",
+      href: "/",
+      icon: OrdersIcon,
+    },
+    {
+      id: 5,
+      name: "Clientes",
+      href: "/",
+      icon: UsersIcon,
+    },
+    {
+      id: 5,
+      name: "Inventarios",
+      href: "/",
+      icon: UsersIcon,
+    },
+    {
+      id: 5,
+      name: "Cartera",
+      href: "/",
+      icon: UsersIcon,
     },
   ],
   // adminCoworking: [
