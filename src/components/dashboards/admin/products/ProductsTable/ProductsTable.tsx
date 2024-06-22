@@ -3,7 +3,7 @@
 import DataTable from 'react-data-table-component';
 import { paginationOptions } from '@/utils/types/tables/PaginationOptions';
 import useProductsTable from './useProductsTable';
-import NewEditProduct from './NewEditProduct/NewEditProduct';
+import NewEditProduct from '../NewEditProduct/NewEditProduct';
 import { Actions } from '@/utils/types/tables/actions.enum';
 
 const ProductsTable = ({ products }) => {
