@@ -3,32 +3,17 @@ import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 
 import { validateForm, validatefield } from '@/components/forms/validateForm';
-
-import { Role } from '@/utils/types/users/usersRoles';
 import { FilterComponent } from '@/components/shared/Table/FilterComponent';
-import createUser from '@/utils/api/users/createUser';
-import putUser from '@/utils/api/users/putUser';
 import CircleButton from '@/components/shared/CircleButton';
 import EditIcon from '@/icons/edit';
 import PlusIcon from '@/icons/plus';
 import TrashIcon from '@/icons/trash';
 import Image from 'next/image';
-import { ProductStatus, tradStatus } from '@/utils/types/products/productStatus.enun';
+import { tradStatus } from '@/utils/types/products/productStatus.enun';
 import getProduct from '@/utils/api/products/getProduct';
 import { useProductStore } from '@/store/product.store';
 import { Actions } from '@/utils/types/tables/actions.enum';
-
-const intialUser = {
-  address: '',
-  email: '',
-  id: '',
-  identification: '',
-  registerDate: null,
-  name: '',
-  phone: '',
-  status: ProductStatus.ACTIVE,
-  role: Role.SELLER
-}
+import { initialProd } from '@/utils/constants';
 
 const useProductsTable = ({ products }) => {
   const [data, setData] = useState([]);
@@ -154,7 +139,7 @@ const useProductsTable = ({ products }) => {
   }
 
   const onNew = () => {
-    setProduct(null);
+    setProduct(initialProd);
     setAction(Actions.NEW)
     // setAction('NEW');
   };

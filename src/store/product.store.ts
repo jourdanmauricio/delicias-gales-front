@@ -2,34 +2,20 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { create } from 'zustand';
 import { ProductStatus } from '@/utils/types/products/productStatus.enun';
 import { Actions } from '@/utils/types/tables/actions.enum';
+import { initialProd } from '@/utils/constants';
+import { IProduct } from '@/utils/constants/products/IProduct';
 
-interface IProduct {
-  id: string;
-  cod: string;
-  description: string;
-  maxQuantity: number;
-  minQuantity: number;
-  name: string;
-  originalPrice: number;
-  prodCategories: any[];
-  retailPrice: number;
-  sku: string;
-  status: ProductStatus;
-  stock: number;
-  thumbnail: string;
-  wholesalePrice: number;
-}
 
 interface State {
   product: IProduct | null;
   action: Actions;
   setProduct: (product: IProduct) => void;
-  updProduct: (name: keyof IProduct, value: string) => void;
+  updProduct: (name: keyof IProduct, value: any[]) => void;
   setAction: (action: Actions) => void;
 }
 
 export const useProductStore = create<State>()(persist((set) => ({
-      product: null, 
+      product: initialProd, 
       action: Actions.VIEW,
       setProduct: (product: IProduct) =>
         set((state) => {
@@ -40,12 +26,14 @@ export const useProductStore = create<State>()(persist((set) => ({
           })
         }),
       updProduct: (name: keyof IProduct, value: any) =>
-        set((state) => ({
+        {
+        console.log("updProduct", name, value)
+        return set((state) => ({
           product: {
             ...state.product,
             [name]: value,
           },
-        })),
+        }))},
       setAction: (action: Actions) =>
         set((state) => {
           console.log("SET ACTION", action)
