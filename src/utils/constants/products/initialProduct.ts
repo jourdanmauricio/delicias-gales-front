@@ -4,6 +4,7 @@ export const initialProd = {
   id: '',
   name: '',
   brandId: '',
+  prodAttributes: [],
   cod: '',
   description: '',
   originalPrice: 0,
@@ -16,4 +17,5 @@ export const initialProd = {
   minQuantity: 0,
   thumbnail: '',
   wholesalePrice: 0,
+  images: [],
 }

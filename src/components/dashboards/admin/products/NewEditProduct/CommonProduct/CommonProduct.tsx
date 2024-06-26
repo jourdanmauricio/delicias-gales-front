@@ -4,7 +4,7 @@ import useCommonProduct from './useCommonProduct'
 const CommonProduct = () => {
   const { product, handleChange, errors } = useCommonProduct();
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-4'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-center'>
       {/* original_price */}
       <div className="">
         <label className="label-form" htmlFor='originalPrice'>Precio original:</label>

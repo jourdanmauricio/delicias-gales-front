@@ -7,7 +7,7 @@ import NewEditProduct from '../NewEditProduct/NewEditProduct';
 import { Actions } from '@/utils/types/tables/actions.enum';
 
 const ProductsTable = ({ products }) => {
-  const { columns, action, ExpandedComponent, rowExpand, expandRow, filteredItems, subHeaderComponentMemo } = useProductsTable({ products });
+  const { columns, action, ExpandedComponent, rowExpand, expandRow, filteredItems, subHeaderComponentMemo, handleChangeData } = useProductsTable({ products });
 
   return (<>
     {action === Actions.VIEW &&
@@ -26,7 +26,7 @@ const ProductsTable = ({ products }) => {
       />
     }
     {(action === Actions.NEW || action === Actions.EDIT) && (
-      <NewEditProduct />
+      <NewEditProduct handleChangeData={handleChangeData} />
     )}
   </>
   )

@@ -33,7 +33,6 @@ export default async function RootLayout({
           <section
             className={`w-full min-h-screen ml-0 py-4 px-4 transform transition duration-500 ease-in-out border-l border-solid border-slate-400 bg-text-color`}
           >
-            {/* <lumau-spinner id="lumau-spinner"></lumau-spinner> */}
             <div className='mt-16'>
 
               {children}
@@ -42,6 +41,7 @@ export default async function RootLayout({
 
           </section>
         </main>
+        <div id="modal"></div>
 
       </body>
     </html>

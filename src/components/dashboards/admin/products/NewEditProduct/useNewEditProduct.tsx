@@ -4,6 +4,11 @@ import { useProductStore } from '@/store/product.store';
 import getBrands from '@/utils/api/brands/getBrands';
 import getCategories from '@/utils/api/categories/getCategories';
 import uploadFile from '@/utils/api/files/uploadFile';
+import createProductAttribute from '@/utils/api/productAttribute/createProductAttribute';
+import removeProductAttribute from '@/utils/api/productAttribute/removeProductAttibute';
+import updProductAttribute from '@/utils/api/productAttribute/updProductAttribute';
+import createProductimage from '@/utils/api/productImage/createProductImage';
+import removeProductImage from '@/utils/api/productImage/removeProductImage';
 import createProduct from '@/utils/api/products/createProduct';
 import updateProduct from '@/utils/api/products/updateProduct';
 import { initialProd } from '@/utils/constants';
@@ -11,7 +16,7 @@ import { Actions } from '@/utils/types/tables/actions.enum';
 import { ChangeEvent, useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
 
-const useNewEditProduct = () => {
+const useNewEditProduct = ({ handleChangeData }) => {
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [errors, setErrors] = useState<any>({});
@@ -88,7 +93,7 @@ const useNewEditProduct = () => {
 
     try {
       setLoading(true);
-      const { id, ...data } = product;
+      const { id, prodAttributes, images, ...data } = product;
       data.originalPrice = +data.originalPrice;
       data.wholesalePrice = +data.wholesalePrice;
       data.retailPrice = +data.retailPrice;
@@ -103,26 +108,53 @@ const useNewEditProduct = () => {
       }
       if (!data.thumbnail) delete data.thumbnail;
 
+      console.log("DATA", data);
+      let prod;
       if (action === Actions.NEW) {
         data.stock = 0;
-        await createProduct(data);
-        console.log("DATA", data)
+        prod = await createProduct(data);
+        setLoading(false);
+        console.log("updProd", prod)
+        handleChangeData(prod);
+
       } else {
-        const updProd = await updateProduct(id, data);
-        console.log("updProd", updProd)
+
+        prod = await updateProduct(id, data);
+        setLoading(false);
+        console.log("updProd", prod)
+        handleChangeData(prod);
       }
 
-      // router.push('/dashboard/admin/users');
-      // router.refresh();
-      setLoading(false);
+      // Attributes
+      for (const attrib of prodAttributes) {
+        if (attrib.action === Actions.NEW) {
+          await createProductAttribute({ productId: prod.id, attributeId: attrib.attributeId, value: attrib.value, unit: attrib.unit })
+        }
+        if (attrib.action === Actions.DELETE) {
+          await removeProductAttribute(attrib.id)
+        }
+        if (attrib.action === Actions.EDIT) {
+          await updProductAttribute(attrib.id, { value: attrib.value, unit: attrib.unit })
+        }
+      }
+
+      // Images
+      for (const image of images) {
+        if (image.action === Actions.NEW) {
+          await createProductimage({ productId: prod.id, secureUrl: image.secureUrl })
+        }
+        if (image.action === Actions.DELETE) {
+          await removeProductImage(image.id)
+        }
+      }
+
       await Swal.fire({
         icon: 'success',
-        title: `Usuario ${action === Actions.NEW ? 'creado' : 'modificado'} con éxito`,
+        title: `Producto ${action === Actions.NEW ? 'creado' : 'modificado'} con éxito`,
         showConfirmButton: false,
         width: '450px',
         timer: 1500
       });
-
     } catch (error) {
       setLoading(false);
       Swal.fire({

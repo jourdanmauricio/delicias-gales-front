@@ -4,6 +4,7 @@ export interface IProduct {
   id: string;
   name: string;
   brandId: string;
+  prodAttributes: any[];
   cod: string;
   description: string;
   maxQuantity: number;
@@ -16,4 +17,5 @@ export interface IProduct {
   stock: number;
   thumbnail: string;
   wholesalePrice: number;
+  images: any[];
 }

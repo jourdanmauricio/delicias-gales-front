@@ -178,7 +178,6 @@ const useAttributes = ({ allAtributes }) => {
         icon: 'error'
       });
     })
-
   }
 
   const onNew = () => {
