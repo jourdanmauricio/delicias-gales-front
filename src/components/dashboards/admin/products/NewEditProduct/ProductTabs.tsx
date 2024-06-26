@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import CommonProduct from './CommonProduct/CommonProduct';
+import AttributesProduct from './AttributesProduct/AttributesProduct';
+import ImagesProduct from './ImagesProduct/ImagesProduct';
 
 const ProductTabs = () => {
   const [toggleState, setToggleState] = useState(1);
@@ -36,7 +38,7 @@ const ProductTabs = () => {
         </div>
 
       </div>
-      <div className="tabs__content">
+      <div className="tabs__content min-h-[300px] p-4">
         <div
           className={
             toggleState === 1
@@ -44,7 +46,6 @@ const ProductTabs = () => {
               : 'tab__content'
           }
         >
-          {/* <Categories allCategories={allCategories} /> */}
           <CommonProduct />
         </div>
 
@@ -55,8 +56,8 @@ const ProductTabs = () => {
               : 'tab__content'
           }
         >
-          2222222222222222222
-          {/* <Brands allBrands={allBrands} /> */}
+
+          <AttributesProduct />
         </div>
         <div
           className={
@@ -65,8 +66,7 @@ const ProductTabs = () => {
               : 'tab__content'
           }
         >
-          3333333333333333333333
-          {/* <Attributes allAtributes={allAttributes} /> */}
+          <ImagesProduct />
         </div>
       </div>
     </div>

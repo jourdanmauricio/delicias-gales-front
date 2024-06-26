@@ -1,6 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation';
-import Swal from 'sweetalert2';
 
 import { validateForm, validatefield } from '@/components/forms/validateForm';
 import { FilterComponent } from '@/components/shared/Table/FilterComponent';
@@ -21,10 +19,10 @@ const useProductsTable = ({ products }) => {
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [rowExpand, setRowExpand] = useState({});
 
-  const { product, action, setAction, setProduct } = useProductStore(state => state)
-  const state = useProductStore(state => state)
+  const { action, setAction, setProduct } = useProductStore(state => state)
+  // const state = useProductStore(state => state)
 
-  console.log("state", state)
+  // console.log("state", state)
 
   const filteredItems = data.filter(
     item =>
@@ -32,10 +30,11 @@ const useProductsTable = ({ products }) => {
       item.name.toLowerCase().includes(filterText.toLowerCase()))
   );
 
-  const router = useRouter();
-
   useEffect(() => {
     setData(products);
+    setAction(Actions.VIEW);
+    setProduct(initialProd);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products])
 
   const ExpandedComponent = ({ data }) => <div>
@@ -148,11 +147,7 @@ const useProductsTable = ({ products }) => {
     const product = await getProduct(row.id);
     setProduct(product);
     setAction(Actions.EDIT)
-    // setCurrentData(row);
-    // setAction('EDIT');
   };
-
-
 
   const subHeaderComponentMemo = useMemo(() => {
     const handleClear = () => {
@@ -183,6 +178,20 @@ const useProductsTable = ({ products }) => {
     (bool === true) ? setRowExpand(row) : setRowExpand({})
   };
 
-  return { columns, action, ExpandedComponent, rowExpand, expandRow, filteredItems, subHeaderComponentMemo }
+  const handleChangeData = (product) => {
+    if (action === Actions.EDIT) {
+      const newData = data.map(el => el.id === product.id ? product : el)
+      setData(newData);
+    }
+    if (action === Actions.NEW) {
+      const newData = [...data, product]
+      setData(newData);
+    }
+    setAction(Actions.VIEW);
+    setProduct(initialProd);
+
+  }
+
+  return { columns, action, ExpandedComponent, rowExpand, expandRow, filteredItems, subHeaderComponentMemo, handleChangeData }
 }
 export default useProductsTable

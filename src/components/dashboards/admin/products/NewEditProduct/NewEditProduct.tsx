@@ -2,16 +2,14 @@
 import 'react-international-phone/style.css';
 
 import Spinner2 from '@/components/shared/Spinner2'
-import { PRODUCT_STATUS, ProductStatus, tradStatus } from '@/utils/types/products/productStatus.enun';
 import useNewEditProduct from './useNewEditProduct';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import Image from 'next/image';
 import EditIcon from '@/icons/edit';
 import ProductTabs from './ProductTabs';
-import CommonProduct from './CommonProduct/CommonProduct';
 
-const NewEditProduct = () => {
-  const { categories, brands, product, loading, preview, onSelectFile, handleChange, handleCancel, hadleSubmit, handleSelectChange, action, errors } = useNewEditProduct();
+const NewEditProduct = ({ handleChangeData }) => {
+  const { categories, brands, product, loading, preview, onSelectFile, handleChange, handleCancel, hadleSubmit, handleSelectChange, action, errors } = useNewEditProduct({ handleChangeData });
   console.log("categories", categories)
   console.log("product", product)
 
@@ -163,7 +161,8 @@ const NewEditProduct = () => {
       </div>
 
       <ProductTabs />
-      <div className='col-span-2 flex justify-between'>
+
+      <div className='mt-8 col-span-2 flex justify-between'>
         <button onClick={handleCancel} type='button' className='btn btn-cancel'>Cancelar</button>
         <button type='submit' className='btn btn-confirm'>{action === Actions.NEW ? 'Crear' : 'Modificar'}</button>
       </div>
