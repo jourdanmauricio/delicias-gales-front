@@ -1,3 +1,4 @@
+import ProductContentHome from "../componenetsProduct/productHome";
 import BrandCards from "./brandCards";
 import CategoriesCards from "./categoriesCards";
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <CategoriesCards />
       <BrandCards />
+      <ProductContentHome />
     </div>
   );
 };
