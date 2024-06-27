@@ -1,13 +1,10 @@
 import BrandCards from "./brandCards";
+import CategoriesCards from "./categoriesCards";
 
 const Home = () => {
   return (
-    <div className="text-slate-800">
-      <div className="">Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
-      <div>Home</div>
+    <div>
+      <CategoriesCards />
       <BrandCards />
     </div>
   );
