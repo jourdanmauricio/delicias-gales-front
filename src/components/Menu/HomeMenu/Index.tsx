@@ -15,12 +15,12 @@ const HomeMenu = async () => {
     <div>
       <div className="sticky z-10 w-full h-16 bg-custom-white backdrop-blur-sm text-custom-black">
         <div className="flex h-full items-center justify-between max-w-[1440px] mx-auto px-8">
-          <Link href={"/"}>
-            <h1 className={`font-caveat font-semibold text-4xl`}>
-              Delicias Gales
-            </h1>
-          </Link>
-          <div>
+          <div className="flex gap-4 justify-center items-center">
+            <Link href={"/"}>
+              <h1 className={`font-caveat font-semibold font-serif mr-10`}>
+                Delicias Gales
+              </h1>
+            </Link>
             {arrayNavbarMenu.map((item, index) => (
               <Link
                 href={item.path}
