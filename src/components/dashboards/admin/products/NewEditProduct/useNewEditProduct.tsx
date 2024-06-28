@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { fields } from '@/components/forms/constants/constants';
 import { validateForm } from '@/components/forms/validateForm';
 import { useProductStore } from '@/store/product.store';
 import getBrands from '@/utils/api/brands/getBrands';
@@ -24,9 +25,14 @@ const useNewEditProduct = ({ handleChangeData }) => {
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState('');
 
-  const { product, action, updProduct, setProduct, setAction } = useProductStore(state => state)
-  const state = useProductStore(state => state)
+  const product = useProductStore(state => state.product);
+  const action = useProductStore(state => state.action);
+  const updProduct = useProductStore(state => state.updProduct);
+  const setProduct = useProductStore(state => state.setProduct);
+  const setAction = useProductStore(state => state.setAction);
+  const fields = useProductStore(state => state.fields)
 
+  const state = useProductStore(state => state)
   console.log("STATE", state)
 
   const fetchData = async () => {
@@ -104,7 +110,8 @@ const useNewEditProduct = ({ handleChangeData }) => {
         const formData = new FormData();
         formData.append('image', selectedFile);
         const { secure_url } = await uploadFile(formData);
-        data.thumbnail = secure_url
+        updProduct('thumbnail', secure_url);
+        data.thumbnail = secure_url;
       }
       if (!data.thumbnail) delete data.thumbnail;
 
@@ -119,7 +126,15 @@ const useNewEditProduct = ({ handleChangeData }) => {
 
       } else {
 
-        prod = await updateProduct(id, data);
+        const updFields = fields.reduce((acc, prop) => {
+          if (data.hasOwnProperty(prop)) {
+            acc[prop] = data[prop];
+          }
+          return acc;
+        }, {});
+
+
+        prod = await updateProduct(id, updFields);
         setLoading(false);
         console.log("updProd", prod)
         handleChangeData(prod);
