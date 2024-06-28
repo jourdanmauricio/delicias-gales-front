@@ -25,13 +25,13 @@ export default async function RootLayout({
     <html lang="es">
       {/* <link rel="icon" href="next.svg" type="image/x-icon" /> */}
       <body
-        className={`${caveat.variable} ${inter.variable} min-h-screen antialiased bg-custom-tertiary`}>
+        className={`${caveat.variable} ${inter.variable} h-screen antialiased bg-custom-tertiary`}>
         <DashboardMenu user={user} />
         <main className="flex w-full min-h-screen">
           <DashboardSidebar user={user} />
 
           <section
-            className={`w-full min-h-screen ml-0 py-4 px-4 transform transition duration-500 ease-in-out border-l border-solid border-slate-400 bg-text-color`}
+            className={`w-full max-h-screen overflow-y-auto ml-0 py-4 px-4 transform transition duration-500 ease-in-out border-l border-solid border-slate-400 bg-text-color`}
           >
             <div className='mt-16'>
 
