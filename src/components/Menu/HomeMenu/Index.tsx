@@ -12,8 +12,8 @@ const HomeMenu = async () => {
   const user = session?.user as UserSession;
 
   return (
-    <div>
-      <div className="sticky z-10 w-full h-16 bg-custom-white backdrop-blur-sm text-custom-black">
+    <div className="sticky top-0">
+      <div className=" z-1 w-full h-16 bg-custom-white backdrop-blur-sm text-custom-black">
         <div className="flex h-full items-center justify-between max-w-[1440px] mx-auto px-8">
           <div className="flex gap-4 justify-center items-center">
             <Link href={"/"}>
