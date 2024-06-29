@@ -111,7 +111,7 @@ const useAttributesProduct = () => {
 
         return new Promise(async (resolve, reject) => {
           try {
-            const newAttributes = [...product.prodAttributes, { id: 'new-1', attributeId: attribute.id, name: attribute.name, value, unit, action: Actions.NEW }]
+            const newAttributes = [...product.prodAttributes, { id: Date.now() + ' -' + Math.floor(Math.random() * 1000), attributeId: attribute.id, name: attribute.name, value, unit, action: Actions.NEW }]
             updProduct('prodAttributes', newAttributes);
             // (action === Actions.NEW)
             //   ? attribute = await newAttribute({ name, unitDefault })
