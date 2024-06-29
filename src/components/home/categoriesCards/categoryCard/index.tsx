@@ -8,9 +8,11 @@ const CategoryCard = ({ id, name, image, productCount }) => {
         <Image
           src={image}
           alt={id}
-          layout="fill" // Usar layout fill para llenar el contenedor
-          objectFit="cover" // Ajustar la imagen para cubrir el contenedor
-          className="rounded-full"
+          // layout="fill" // Usar layout fill para llenar el contenedor
+          // objectFit="cover" // Ajustar la imagen para cubrir el contenedor
+          width={216}
+          height={216}
+          className="w-52 h-52 object-cover object-center"
         />
       </div>
       <p>Cantidad de productos: {productCount}</p>
