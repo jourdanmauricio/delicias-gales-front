@@ -7,9 +7,11 @@ const ProductCard = ({ id, name, thumbnail, stock, prodAttributes }) => {
         <Image
           src={thumbnail}
           alt={name}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-sm"
+          // layout="fill"
+          // objectFit="cover"
+          width={216}
+          height={216}
+          className="w-52 h-52 object-cover object-center"
         />
       </div>
       <p>{name}</p>
