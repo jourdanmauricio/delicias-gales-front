@@ -12,12 +12,12 @@ const HomeMenu = async () => {
   const user = session?.user as UserSession;
 
   return (
-    <div className="sticky top-0">
-      <div className=" z-1 w-full h-16 bg-custom-white backdrop-blur-sm text-custom-black">
+    <div className="sticky top-0 z-30">
+      <div className="w-full h-16 bg-custom-white backdrop-blur-sm text-custom-black">
         <div className="flex h-full items-center justify-between max-w-[1440px] mx-auto px-8">
           <div className="flex gap-4 justify-center items-center">
             <Link href={"/"}>
-              <h1 className={`font-caveat font-semibold font-serif mr-10`}>
+              <h1 className={`font-caveat text-4xl font-semibold mr-10`}>
                 Delicias Gales
               </h1>
             </Link>
