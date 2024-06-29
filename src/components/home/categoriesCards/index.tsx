@@ -1,13 +1,6 @@
-import getCategories from "@/utils/api/categories/getCategories";
 import CategoryCard from "./categoryCard";
 
-const CategoriesCards = async () => {
-  const getData = async () => {
-    const data = await getCategories();
-    return data;
-  };
-
-  const data = await getData();
+const CategoriesCards = async ({ categories }) => {
 
   return (
     <div className="mb-16">
@@ -15,17 +8,16 @@ const CategoriesCards = async () => {
         Nuestras Categorias
       </h1>
       <div className="flex gap-4 justify-center">
-        {data.map((category) => {
-          return (
-            <CategoryCard
-              key={category.id}
-              image={category.image}
-              id={category.id}
-              name={category.name}
-              productCount={category.productCount}
-            />
-          );
-        })}
+        {categories.map((category) => (
+          category.show &&
+          <CategoryCard
+            key={category.id}
+            image={category.image}
+            id={category.id}
+            name={category.name}
+            productCount={category.productCount}
+          />
+        ))}
       </div>
     </div>
   );
