@@ -6,6 +6,7 @@ import { UserSession } from "@/app/lib/definitions";
 import { getSession } from "@/app/lib/session";
 import SessionMenu from "../SessionMenu";
 import arrayNavbarMenu from "@/utils/arrayMenu/arrayNavbarMenu";
+import DinamicCar from "./dinamicCar";
 
 const HomeMenu = async () => {
   const session = await getSession();
@@ -32,11 +33,7 @@ const HomeMenu = async () => {
           </div>
 
           <div className="flex justify-center items-center gap-8">
-            <Link href={"/login"}>
-              <CircleButton className="p-2 rounded-full cursor-pointer hover:bg-purple-950/20">
-                <CartIcon className="w-7 h-7" />
-              </CircleButton>
-            </Link>
+            <DinamicCar />
 
             {user ? (
               <SessionMenu user={user} />

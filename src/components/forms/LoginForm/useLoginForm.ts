@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useUserStore } from "@/store/user.store";
 import { validateForm, validatefield } from "../validateForm";
 import { HandleLogin } from "@/actions/auth";
+import { useShopCarStore } from "@/store/shopcar.store";
 
 const useLoginForm = () => {
   const [newData, setNewData] = useState({
@@ -17,6 +18,8 @@ const useLoginForm = () => {
     password: "",
   });
   const { setUser, user } = useUserStore((state) => state);
+
+  const { setUserId } = useShopCarStore((state) => state);
 
   const router = useRouter();
 
@@ -48,7 +51,9 @@ const useLoginForm = () => {
     if (!data.error) {
       setUser(data.user);
       console.log(data);
-
+      if (data.user.role === "customer") {
+        setUserId(data.user.id);
+      }
       Swal.fire({
         icon: "success",
         title: "Bienvenido",

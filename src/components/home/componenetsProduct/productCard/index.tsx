@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AddToCart from "./AddToCart";
 
 const ProductCard = ({ id, name, thumbnail, stock, prodAttributes }) => {
   return (
@@ -20,15 +21,8 @@ const ProductCard = ({ id, name, thumbnail, stock, prodAttributes }) => {
           return <p key={atrubuto.id}>{atrubuto.name}</p>;
         })}
       </div>
-      <div>
-        <button>+</button>
-        <input type="text" className="border w-6" />
-        <button>-</button>
-      </div>
       <p>Stock: {stock}</p>
-      <button className="bg-red-600 text-white p-2 rounded">
-        Agregar al carrito
-      </button>
+      <AddToCart id={id} />
     </div>
   );
 };
