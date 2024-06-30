@@ -13,7 +13,7 @@ const DinamicCar = () => {
   }, [products]);
 
   return (
-    <Link href={"/"}>
+    <Link href={"/shopCar"}>
       <div className="p-2 flex flex-col justify-center items-center rounded-full cursor-pointer hover:bg-purple-950/20">
         <p className="font-semibold text-sm">{total}</p>
         <CartIcon className="w-7 h-7" />
