@@ -10,19 +10,25 @@ const ShopCar = () => {
 
   const getData = async () => {
     const data = await getProducts();
-    const ListCar = data.map((product) => {
-      products.find((element) => {
-        if (element.id === product.id) {
+    const ListCar = data
+      .map((product) => {
+        console.log("product", product);
+
+        const matchedProduct = products.find(
+          (element) => element.id === product.id
+        );
+
+        if (matchedProduct) {
           return {
             id: product.id,
             name: product.name,
             price: product.originalPrice,
             image: product.thumbnail,
-            quantity: element.quantity,
+            quantity: matchedProduct.quantity,
           };
         }
-      });
-    });
+      })
+      .filter(Boolean); // Filtra los valores undefined
 
     setProductList(ListCar);
   };
@@ -32,10 +38,11 @@ const ShopCar = () => {
   }, [products]);
 
   return (
-    <div>
-      {productList.map((product) => (
-        <ShopCarItem key={product.id} product={product} />
-      ))}
+    <div >
+      {productList &&
+        productList.map((product) => (
+          <ShopCarItem key={product.id} product={product} />
+        ))}
     </div>
   );
 };
