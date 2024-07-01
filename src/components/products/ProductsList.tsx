@@ -45,8 +45,8 @@ const ProductsList = ({ prods, cat, categories, brands, filterProds, brand }) =>
 
   return (
     <main className='m-8'>
-      <header className='flex justify-between items-center border rounded border-gray-800 p-4 gap-4'>
-        <div className="relative w-1/3">
+      <header className='flex flex-col sm:flex-row justify-between items-center border rounded border-gray-800 p-4 gap-4'>
+        <div className="relative w-full sm:w-1/3">
           <label className="label-form" htmlFor='text'>Buscar:</label>
           <input
             id='text'
@@ -58,7 +58,7 @@ const ProductsList = ({ prods, cat, categories, brands, filterProds, brand }) =>
           />
         </div>
 
-        <div className="relative w-1/3">
+        <div className="relative w-full sm:w-1/3">
           <label className="label-form" htmlFor='category'>Categoría:</label>
           <div className="">
             <select
@@ -87,7 +87,7 @@ const ProductsList = ({ prods, cat, categories, brands, filterProds, brand }) =>
           </div>
         </div>
 
-        <div className="relative w-1/3">
+        <div className="relative w-full sm:w-1/3">
           <label className="label-form" htmlFor='brand'>Marca:</label>
           <div className="">
             <select
