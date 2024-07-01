@@ -16,6 +16,7 @@ const CategoryCard = ({ id, name, image, productCount }) => {
         />
       </div>
       <p>Cantidad de productos: {productCount}</p>
+      <a href={`/products?category=${id}`} className='btn btn-confirm block mt-4 mx-auto text-center'>Ver Productos</a>
     </div>
   );
 };
