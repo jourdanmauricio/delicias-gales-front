@@ -4,13 +4,15 @@ import { useMemo, useState } from 'react';
 import ProductCard from './productCard';
 import { useDebounce } from '@/hooks/useDebounce';
 
-const ProductsList = ({ prods, cat, categories, brands }) => {
+const ProductsList = ({ prods, cat, categories, brands, filterProds, brand }) => {
 
   const [filters, setFilters] = useState({
-    category: '',
-    brand: '',
+    category: cat,
+    brand: brand,
     text: ''
   });
+
+  const [filteredProds, setFilteredProds] = useState(filterProds)
 
   const handleChange = (name, value) => {
     setFilters(prevFilters => ({
@@ -38,7 +40,7 @@ const ProductsList = ({ prods, cat, categories, brands }) => {
       );
     }
 
-    return filtered;
+    setFilteredProds(filtered)
   }, [filters.category, filters.brand, debouncedText, prods]);
 
   return (
@@ -117,7 +119,7 @@ const ProductsList = ({ prods, cat, categories, brands }) => {
       </header>
 
       <div className="mt-4 flex flex-wrap gap-4 mx-auto justify-center">
-        {filteredProducts.map((product) => (
+        {filteredProds.map((product) => (
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
