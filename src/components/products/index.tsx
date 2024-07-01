@@ -11,7 +11,6 @@ const Products = async ({ searchParams }: { searchParams: { category: string, br
   const categories = respCategories.filter(cat => cat.show === true)
   const brands = await getBrands();
   let filterProds = prods;
-  console.log("categoryParam", category);
 
   if (category) {
     filterProds = prods.filter(product => product.categoriesIds.includes(category));
