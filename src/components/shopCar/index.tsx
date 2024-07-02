@@ -3,10 +3,20 @@ import { useShopCarStore } from "@/store/shopcar.store";
 import getProducts from "@/utils/api/products/getProducts";
 import { useEffect, useState } from "react";
 import ShopCarItem from "./shopCarItem";
+import newOrder from "@/utils/api/orders/newOrder";
+import GetOrder from "@/utils/api/orders/getOrders";
 
 const ShopCar = () => {
   const [productList, setProductList] = useState([]);
-  const { products } = useShopCarStore();
+  const { products, userId } = useShopCarStore();
+
+  const sendOrder = async () => {
+    await newOrder({ products, userId });
+  };
+  const getOrder = async () => {
+    const order = await GetOrder();
+    console.log("order", order);
+  };
 
   const getData = async () => {
     const data = await getProducts();
@@ -38,11 +48,18 @@ const ShopCar = () => {
   }, [products]);
 
   return (
-    <div >
-      {productList &&
-        productList.map((product) => (
-          <ShopCarItem key={product.id} product={product} />
-        ))}
+    <div>
+      <div>
+        {productList &&
+          productList.map((product) => (
+            <ShopCarItem key={product.id} product={product} />
+          ))}
+      </div>
+      <button
+        onClick={sendOrder}
+        className="bg-red-500 text-white px-4 py-2 rounded-md">
+        enviar pedido
+      </button>
     </div>
   );
 };
