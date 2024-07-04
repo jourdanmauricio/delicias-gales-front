@@ -6,6 +6,8 @@ const newOrder = async (data) => {
     console.log("response", response.data);
     return response.data;
   } catch (error: any) {
+    console.log(error);
+
     let message = "";
     if (error.response.data.message) {
       message = error.response.data.message;
