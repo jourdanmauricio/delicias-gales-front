@@ -1,4 +1,4 @@
-import ProductCard from "../productCard";
+import ProductCard from "@/components/shared/productCard";
 
 const ProductContentHome = ({ products }) => {
 
@@ -11,7 +11,7 @@ const ProductContentHome = ({ products }) => {
         <div className="text-3xl font-bold ">&lt;</div>
         <div className="flex gap-4 ">
           {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
         <div className="text-3xl font-bold">&gt;</div>

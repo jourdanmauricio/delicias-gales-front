@@ -2,7 +2,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { create } from 'zustand';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import { initialProd } from '@/utils/constants';
-import { IProduct } from '@/utils/constants/products/IProduct';
+import { IProduct } from '@/utils/types/products/IProduct';
 
 interface State {
   product: IProduct | null;
@@ -38,6 +38,7 @@ export const useProductStore = create<State>()(persist((set, get) => ({
           },
           fields: newFields
         }))},
+        
       setAction: (action: Actions) =>
         set((state) => {
           console.log("SET ACTION", action)

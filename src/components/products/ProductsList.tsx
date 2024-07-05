@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from 'react';
-import ProductCard from './productCard';
+import ProductCard from '@/components/shared/productCard';
 import { useDebounce } from '@/hooks/useDebounce';
 
 const ProductsList = ({ prods, cat, categories, brands, filterProds, brand }) => {
@@ -120,7 +120,7 @@ const ProductsList = ({ prods, cat, categories, brands, filterProds, brand }) =>
 
       <div className="mt-4 flex flex-wrap gap-4 mx-auto justify-center">
         {filteredProds.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </main>

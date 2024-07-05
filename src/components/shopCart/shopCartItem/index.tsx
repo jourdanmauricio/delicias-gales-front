@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const ShopCarItem = ({ product }) => {
+const ShopCartItem = ({ product }) => {
   const { id, name, price, image, quantity } = product;
   return (
     <div className="border flex gap-4 p-4 bg-white rounded-md my-8 mx-4">
@@ -23,4 +23,4 @@ const ShopCarItem = ({ product }) => {
   );
 };
 
-export default ShopCarItem;
+export default ShopCartItem;

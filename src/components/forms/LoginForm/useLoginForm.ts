@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { useUserStore } from "@/store/user.store";
 import { validateForm, validatefield } from "../validateForm";
 import { HandleLogin } from "@/actions/auth";
-import { useShopCarStore } from "@/store/shopcar.store";
+import { useShopCartStore } from "@/store/shopCart.store";
 
 const useLoginForm = () => {
   const [newData, setNewData] = useState({
@@ -19,7 +19,7 @@ const useLoginForm = () => {
   });
   const { setUser, user } = useUserStore((state) => state);
 
-  const { setUserId } = useShopCarStore((state) => state);
+  const { setUserId } = useShopCartStore((state) => state);
 
   const router = useRouter();
 

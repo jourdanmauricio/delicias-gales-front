@@ -1,1 +1,1 @@
-export {default} from '@/components/shopCar'
+export { default } from '@/components/shopCart';

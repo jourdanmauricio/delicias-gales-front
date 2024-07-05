@@ -1,14 +1,14 @@
 "use client";
-import { useShopCarStore } from "@/store/shopcar.store";
+import { useShopCartStore } from "@/store/shopCart.store";
 import getProducts from "@/utils/api/products/getProducts";
 import { useEffect, useState } from "react";
-import ShopCarItem from "./shopCarItem";
+import ShopCartItem from "./shopCartItem";
 import newOrder from "@/utils/api/orders/newOrder";
 import GetOrder from "@/utils/api/orders/getOrders";
 
-const ShopCar = () => {
+const ShopCart = () => {
   const [productList, setProductList] = useState([]);
-  const { products, userId } = useShopCarStore();
+  const { products, userId } = useShopCartStore();
 
   const sendOrder = async () => {
     await newOrder({ products, userId });
@@ -45,6 +45,7 @@ const ShopCar = () => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
   return (
@@ -52,7 +53,7 @@ const ShopCar = () => {
       <div>
         {productList &&
           productList.map((product) => (
-            <ShopCarItem key={product.id} product={product} />
+            <ShopCartItem key={product.id} product={product} />
           ))}
       </div>
       <button
@@ -64,4 +65,4 @@ const ShopCar = () => {
   );
 };
 
-export default ShopCar;
+export default ShopCart;
