@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        'width': 'width'
+      },
       fontFamily: {
         caveat: ["var(--font-caveat)"],
         inter: ["var(--font-inter)"],
