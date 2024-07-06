@@ -20,6 +20,7 @@ const ProductCard = ({ product }) => {
         })}
       </div>
       <p>Stock: {product.stock}</p>
+      <p>Precio: {product.retailPrice}</p>
       <div className='w-full'>
         <AddToCart product={product} />
       </div>

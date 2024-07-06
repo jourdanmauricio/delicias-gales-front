@@ -1,12 +1,6 @@
 import { persist, createJSONStorage } from "zustand/middleware";
 import { create } from "zustand";
-import { IProduct } from '@/utils/types/products/IProduct';
 import { IProdCart } from '@/utils/types/products/IProdCart';
-
-// interface IProducts {
-//   id: string;
-//   quantity: number;
-// }
 
 interface State {
   userId: string | null;
@@ -33,6 +27,7 @@ export const useShopCartStore = create<State>()(
           if (product.quantity === 0) {
             const updatedProducts = state.products.filter((prod) =>
               prod.id !== product.id);
+            console.log("Delete product",updatedProducts )
           return ({ products: updatedProducts });  
           }
             

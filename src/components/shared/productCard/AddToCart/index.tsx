@@ -8,6 +8,8 @@ const AddToCart = ({ product }) => {
     id: product.id,
     name: product.name,
     thumbnail: product.thumbnail,
+    retailPrice: product.retailPrice,
+    wholesalePrice: product.wholesalePrice,
     quantity: 0,
   });
 
@@ -21,12 +23,14 @@ const AddToCart = ({ product }) => {
       name: product.name,
       thumbnail: product.thumbnail,
       quantity: prod ? prod.quantity : 0,
+      retailPrice: +product.retailPrice,
+      wholesalePrice: +product.wholesalePrice,
     }
     setProdCart(prodCart)
   }, [product, products]);
 
 
-  const handleChangeQuantity = (value) => {
+  const handleChangeQuantity = (value: number) => {
     setProducts({ ...prodCart, quantity: Number(value) });
   };
 
@@ -36,10 +40,10 @@ const AddToCart = ({ product }) => {
         <div className='flex justify-between gap-4'>
           <button onClick={() => handleChangeQuantity(+prodCart.quantity - 1)} type='button' className='btn btn-confirm'>-</button>
           <input
-            type="text"
+            type="number"
             className="input-form text-center"
             value={prodCart.quantity || 0}
-            onChange={(e) => handleChangeQuantity(e.target.value)}
+            onChange={(e) => handleChangeQuantity(+e.target.value)}
           />
           <button onClick={() => handleChangeQuantity(+prodCart.quantity + 1)} type='button' className='btn btn-confirm'>+</button>
         </div>

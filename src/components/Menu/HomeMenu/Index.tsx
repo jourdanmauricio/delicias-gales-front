@@ -1,4 +1,3 @@
-import CartIcon from "@/icons/cart";
 import UserIcon from "@/icons/user";
 import CircleButton from "../../shared/CircleButton";
 import Link from "next/link";

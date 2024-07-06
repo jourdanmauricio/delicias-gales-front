@@ -5,6 +5,6 @@ export interface IProdCart {
   name: string;
   thumbnail: string;
   quantity: number;
-  // retailPrice: number;
-  // wholesalePrice: number;
+  retailPrice: number;
+  wholesalePrice: number;
 }
