@@ -7,7 +7,7 @@ const CategoriesCards = async ({ categories }) => {
       <h1 className="text-3xl font-bold text-center my-9">
         Nuestras Categorias
       </h1>
-      <div className="flex gap-4 justify-center">
+      <div className="flex flex-wrap gap-4 justify-center">
         {categories.map((category) => (
           category.show &&
           <CategoryCard

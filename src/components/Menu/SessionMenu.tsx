@@ -52,13 +52,12 @@ const SessionMenu = ({ user }) => {
         showMenu &&
         <div className='absolute top-12 -left-12 bg-slate-50 text-slate-900 rounded'>
 
+          {user.role !== Role.CUSTOMER && (
+            <Link href={`/dashboard/${user.role}`} className='text-left pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Dashboard</Link>
+          )}
           <Link className='w-full block pt-2 pb-1 px-4 hover:bg-slate-300 rounded-t' href="/profile">Perfil</Link>
 
-          {user.role === Role.CUSTOMER ? (
-            <button className='pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Mis pedidos</button>
-          ) :
-            <Link href={`/dashboard/${user.role}`} className='text-left pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Dashboard</Link>
-          }
+          <button className='pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Mis pedidos</button>
           <button onClick={handleLogout} className='text-left pb-2 pt-1 px-4 w-full hover:bg-slate-300 rounded-t'>Logout</button>
         </div>
       }
