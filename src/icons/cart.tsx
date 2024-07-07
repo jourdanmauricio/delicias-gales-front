@@ -1,4 +1,4 @@
-const CartIcon = (props: any) => {
+const CartIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

@@ -1,4 +1,4 @@
-const EditIcon = (props: any) => {
+const EditIcon = (props: React.SVGProps<SVGAElement>) => {
     return (
         <svg
             className={props.className}

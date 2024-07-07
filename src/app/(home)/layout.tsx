@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import { caveat, inter } from '@/app/fonts';
 import Menu from '@/components/Menu/HomeMenu/Index';
 import HomeMenu from '@/components/Menu/HomeMenu/Index';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Delicias Gales",
@@ -22,6 +23,7 @@ export default function RootLayout({
         className={`${caveat.variable} ${inter.variable} antialiased bg-custom-tertiary`}>
         <HomeMenu />
         {children}
+        <Footer />
       </body>
     </html>
   );

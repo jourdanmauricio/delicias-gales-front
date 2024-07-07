@@ -1,4 +1,4 @@
-const TrashIcon = (props: any) => {
+const TrashIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

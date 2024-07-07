@@ -1,7 +1,4 @@
-type Iprops = {
-  className: string;
-}
-const EyeSlashIcon = (props: Iprops) => {
+const EyeSlashIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

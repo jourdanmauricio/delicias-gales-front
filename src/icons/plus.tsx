@@ -1,4 +1,4 @@
-const PlusIcon = (props: any) => {
+const PlusIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

@@ -1,4 +1,4 @@
-const BrandsIcon = (props: any) => {
+const BrandsIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

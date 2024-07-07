@@ -1,4 +1,6 @@
-const HamburgerMenuIcon = (props: any) => {
+import React from 'react';
+
+const HamburgerMenuIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

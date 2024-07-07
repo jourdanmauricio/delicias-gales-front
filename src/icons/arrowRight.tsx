@@ -1,4 +1,4 @@
-const ArrowRightIcon = (props: any) => {
+const ArrowRightIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

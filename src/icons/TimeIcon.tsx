@@ -1,4 +1,4 @@
-const TimeIcon = (props: any) => {
+const TimeIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}

@@ -1,4 +1,4 @@
-const CloseSquareIcon = (props: any) => {
+const CloseSquareIcon = (props: React.SVGProps<SVGAElement>) => {
   return (
     <svg
       className={props.className}
