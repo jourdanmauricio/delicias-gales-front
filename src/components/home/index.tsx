@@ -14,10 +14,12 @@ const Home = async () => {
   const brands = await getBrands();
 
   return (
-    <div>
-      <CategoriesCards categories={categories} />
-      <BrandCards brands={brands} />
-      <ProductContentHome products={featuredProducts.products} />
+    <div className='flex flex-col min-h-screen'>
+      <main className='flex-1'>
+        <CategoriesCards categories={categories} />
+        <BrandCards brands={brands} />
+        <ProductContentHome products={featuredProducts.products} />
+      </main>
     </div>
   );
 };
