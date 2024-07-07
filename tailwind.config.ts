@@ -10,7 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       transitionProperty: {
-        'width': 'width'
+        'width': 'width',
+        'left': 'left',
+        'right': 'right',
       },
       fontFamily: {
         caveat: ["var(--font-caveat)"],

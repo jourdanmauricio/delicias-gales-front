@@ -8,6 +8,17 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
 
 @layer utilities {
   .text-balance {

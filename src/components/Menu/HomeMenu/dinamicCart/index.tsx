@@ -19,7 +19,6 @@ const DinamicCart = () => {
     const total = products.reduce((total, producto) => {
       return total + (producto.retailPrice * producto.quantity);
     }, 0)
-    console.log("menu", products)
     setTotalCart(total)
   }, [products]);
 
@@ -29,7 +28,6 @@ const DinamicCart = () => {
         !buttonCartRef.current.contains(event.target as Node) &&
         divCartRef.current &&
         !divCartRef.current.contains(event.target as Node)) {
-        console.log("CLOSE")
         setShowShopCart(false);
       }
     };
@@ -39,7 +37,6 @@ const DinamicCart = () => {
 
   const handleClick = () => {
     setShowShopCart(!showShopCart);
-    console.log("Show", showShopCart)
   }
 
   return (
@@ -59,9 +56,9 @@ const DinamicCart = () => {
         <div className='absolute top-16 left-0 w-full h-[100vh] bg-black/50 backdrop-blur-sm'></div>
       )}
 
-      <div ref={divCartRef} className={`absolute min-h-[100vh] top-16 transition-width transition-slowest ease right-0 bg-slate-50 text-slate-900 rounded ${showShopCart ? 'w-[50%]' : 'w-0'}`}>
+      <div ref={divCartRef} className={`absolute min-h-[100vh] w-full md:w-1/2 top-16 transition-left duration-500 ease bg-slate-50 text-slate-900 rounded ${showShopCart ? 'left-0' : '-left-full'}`}>
 
-        <div className='p-4 overflow-y-scroll h-[90vh]'>
+        <div className='m-4 overflow-y-scroll h-[80vh]'>
           {products.map(product => (
             <div key={product.id} className='flex items-center gap-4 mt-4'>
               <Image src={product.thumbnail} width={64} height={64} className='w-16 h-16 object-cover'
