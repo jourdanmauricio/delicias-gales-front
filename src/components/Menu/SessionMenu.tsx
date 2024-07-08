@@ -61,7 +61,7 @@ const SessionMenu = ({ user }) => {
           {user.role !== Role.CUSTOMER && (
             <Link href={`/dashboard/${user.role}`} className='text-left pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Dashboard</Link>
           )}
-          <Link className='w-full block pt-2 pb-1 px-4 hover:bg-slate-300 rounded-t' href="/profile">Perfil</Link>
+          <Link className='w-full block pt-2 pb-1 px-4 hover:bg-slate-300 rounded-t' href="/perfil">Perfil</Link>
 
           <button className='pt-2 pb-1 px-4 w-full hover:bg-slate-300 whitespace-nowrap'>Mis pedidos</button>
           <button onClick={handleLogout} className='text-left pb-2 pt-1 px-4 w-full hover:bg-slate-300 rounded-t'>Logout</button>

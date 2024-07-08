@@ -12,8 +12,7 @@ const Profile = () => {
   const { profile, loading, errors, selectedFile, preview, handleChange, handleSubmit, onSelectFile, handleCancel } = useProfileForm()
   return (
 
-    <main className='pt-20 max-w-[1024px] min-h-screen mx-auto px-10'>
-      Id: {profile.id}
+    <main className='max-w-[1024px] min-h-screen mx-auto px-10'>
       <form
         id='profile-form'
         className="mt-10"

@@ -15,14 +15,14 @@ const ProductCard = ({ product }) => {
           className="w-52 h-52 object-cover object-center"
         />
         <div className='absolute top-2 right-2 p-2 bg-purple-100 bg-opacity-40 rounded-full cursor-pointer'>
-          <Link className='font-semibold' href={`/products/${product.id}`}><EyeIcon className='h-5 w-5 text-custom-primary' />
+          <Link className='font-semibold' href={`/productos/${product.slug}`}><EyeIcon className='h-5 w-5 text-custom-primary' />
           </Link>
 
         </div>
       </header>
       <main>
         <div className='my-4'>
-          <Link className='font-semibold' href={`/products/${product.id}`}>{product.name}
+          <Link className='font-semibold' href={`/productos/${product.slug}`}>{product.name}
           </Link>
         </div>
         {/* <div>
