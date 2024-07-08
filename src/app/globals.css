@@ -185,3 +185,23 @@ html {
   /* order: 1; */
 }
 
+/* Table */
+.table {
+  @apply w-full border-collapse;
+}
+
+.table th, .table td {
+  @apply border border-gray-200 px-4;
+}
+
+.table th {
+  @apply bg-gray-100 text-left font-medium text-gray-700;
+}
+
+.table tr:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+.table tr:hover {
+  @apply bg-gray-100;
+}

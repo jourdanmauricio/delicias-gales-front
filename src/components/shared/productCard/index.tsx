@@ -1,10 +1,12 @@
 import Image from "next/image";
 import AddToCart from "./AddToCart";
+import Link from 'next/link';
+import EyeIcon from '@/icons/eye';
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="w-60 bg-white shadow-xl rounded-sm p-4 ">
-      <div className="relative w-52 h-52 mx-auto">
+    <article className="w-60 min-h-[400px] bg-white shadow-xl rounded-sm p-4 ">
+      <header className="relative w-52 h-52 mx-auto">
         <Image
           src={product.thumbnail}
           alt={product.name}
@@ -12,19 +14,29 @@ const ProductCard = ({ product }) => {
           height={216}
           className="w-52 h-52 object-cover object-center"
         />
-      </div>
-      <p>{product.name}</p>
-      <div>
+        <div className='absolute top-2 right-2 p-2 bg-purple-100 bg-opacity-40 rounded-full cursor-pointer'>
+          <Link className='font-semibold' href={`/products/${product.id}`}><EyeIcon className='h-5 w-5 text-custom-primary' />
+          </Link>
+
+        </div>
+      </header>
+      <main>
+        <div className='my-4'>
+          <Link className='font-semibold' href={`/products/${product.id}`}>{product.name}
+          </Link>
+        </div>
+        {/* <div>
         {product.prodAttributes.map((atrubuto) => {
           return <p key={atrubuto.id}>{atrubuto.name}</p>;
         })}
-      </div>
-      <p>Stock: {product.stock}</p>
-      <p>Precio: {product.retailPrice}</p>
-      <div className='w-full'>
+      </div> */}
+        <p>Stock: {product.stock}</p>
+        <p>Precio: {product.retailPrice}</p>
+      </main>
+      <footer className='w-full'>
         <AddToCart product={product} />
-      </div>
-    </div>
+      </footer>
+    </article >
   );
 };
 

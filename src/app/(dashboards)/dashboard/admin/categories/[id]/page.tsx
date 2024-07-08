@@ -1,1 +1,0 @@
-export { default } from '@/components/dashboards/admin/categories/editCategory';
