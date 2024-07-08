@@ -6,6 +6,7 @@ interface State {
   userId: string | null;
   products: IProdCart[];
   setProducts: (product: IProdCart) => void;
+  removeProducts: () => void;
   setUserId: (userId: string) => void;
 }
 
@@ -14,6 +15,13 @@ export const useShopCartStore = create<State>()(
     (set, get) => ({
       userId: null,
       products: [],
+      removeProducts: () => {
+        return set(() => (
+          {
+            products: [],
+          }
+        ))
+      }, 
       setProducts: (product: IProdCart) =>
         set((state) => {
           const index = state.products.findIndex(

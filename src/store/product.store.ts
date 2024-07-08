@@ -18,7 +18,6 @@ export const useProductStore = create<State>()(persist((set, get) => ({
       action: Actions.VIEW,
       fields: [],
       setProduct: (product: IProduct) => {
-        console.log("SET PRODUCT", product);
         return set(() => (
           {
             product: product,
