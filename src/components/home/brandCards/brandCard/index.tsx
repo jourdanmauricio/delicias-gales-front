@@ -6,12 +6,12 @@ const BrandCard = ({ image, id, name }) => {
     <div className="flex flex-col justify-between rounded-md p-4 bg-white duration-500  hover:scale-105 shadow-md ">
       <h2>{name}</h2>
       <div className="mx-auto">
-        <Link href={`/products?brand=${id}`}>
+        <Link href={`/productos?brand=${id}`}>
           <Image src={image} alt={id} width={150} height={150} />
         </Link>
       </div>
       <Link
-        href={`/products?brand=${id}`}
+        href={`/productos?brand=${id}`}
         className="btn btn-confirm block mt-4 mx-auto text-center">
         Ver Productos
       </Link>

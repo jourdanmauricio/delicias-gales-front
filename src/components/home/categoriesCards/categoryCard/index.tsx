@@ -6,7 +6,7 @@ const CategoryCard = ({ id, name, image, productCount }) => {
     <div className="rounded-md p-4 bg-white duration-500 hover:scale-105 shadow-md ">
       <h2>{name}</h2>
       <div className="relative w-40 h-40 rounded-full overflow-hidden mx-auto">
-        <Link href={`/products?category=${id}`}>
+        <Link href={`/productos?category=${id}`}>
           <Image
             src={image}
             alt={id}
@@ -20,7 +20,7 @@ const CategoryCard = ({ id, name, image, productCount }) => {
       </div>
       <p>Cantidad de productos: {productCount}</p>
       <Link
-        href={`/products?category=${id}`}
+        href={`/productos?category=${id}`}
         className="btn btn-confirm block mt-4 mx-auto text-center">
         Ver Productos
       </Link>

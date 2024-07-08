@@ -33,6 +33,37 @@ const NewEditProduct = ({ handleChangeData }) => {
             {errors.name}
           </p>
         </div>
+        {/* slug */}
+        <div className="">
+          <label className="label-form" htmlFor='slug'>Slug:</label>
+          <input
+            id='slug'
+            name="slug"
+            type="text"
+            className="input-form"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            value={product.slug || ''}
+          />
+          <p className={`input-error ${errors.slug ? 'opacity-100' : 'opacity-0'}`}>
+            {errors.slug}
+          </p>
+        </div>
+        {/* discount */}
+        <div className="">
+          <label className="label-form" htmlFor='discount'>Código Descuento:</label>
+          <input
+            id='discount'
+            name="discount"
+            type="text"
+            className="input-form"
+            disabled
+          // onChange={(e) => handleChange(e.target.name, e.target.value)}
+          // value={product.slug || ''}
+          />
+          <p className={`input-error ${errors.slug ? 'opacity-100' : 'opacity-0'}`}>
+            {errors.slug}
+          </p>
+        </div>
         {/* Brand */}
         <div className="relative">
           <label className="label-form" htmlFor='brandId'>Marca:</label>

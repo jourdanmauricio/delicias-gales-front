@@ -1,10 +1,10 @@
-import getProduct from '@/utils/api/products/getProduct'
 import AddToCart from '../shared/productCard/AddToCart'
 import ProductImages from './ProductImages'
+import getProductBySlug from '@/utils/api/products/getProductBySlug'
 
-const Product = async ({ params }: { params: { id: string } }) => {
+const Product = async ({ params }: { params: { slug: string } }) => {
 
-  const product = await getProduct(params.id)
+  const product = await getProductBySlug(params.slug);
 
   console.log("product", product)
 

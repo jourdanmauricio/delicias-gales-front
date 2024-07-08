@@ -3,6 +3,7 @@ import { ProductStatus } from '@/utils/types/products/productStatus.enun';
 export const initialProd = {
   id: '',
   name: '',
+  slug: '',
   brandId: '',
   prodAttributes: [],
   cod: '',
