@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { fields } from '@/components/forms/constants/constants';
 import { validateForm } from '@/components/forms/validateForm';
+import { createSlug } from '@/helpers/createSlug';
 import { useProductStore } from '@/store/product.store';
 import getBrands from '@/utils/api/brands/getBrands';
 import getCategories from '@/utils/api/categories/getCategories';
@@ -33,7 +34,7 @@ const useNewEditProduct = ({ handleChangeData }) => {
   const fields = useProductStore(state => state.fields)
 
   const state = useProductStore(state => state)
-  console.log("STATE", state)
+  // console.log("STATE", state)
 
   const fetchData = async () => {
     const categories = await getCategories();
@@ -65,6 +66,15 @@ const useNewEditProduct = ({ handleChangeData }) => {
 
   const handleChange = (name, value) => {
     updProduct(name, value)
+    if (name === 'name') {
+      const slug = createSlug(value);
+      updProduct("slug", slug);
+    }
+  }
+
+  const handleChangeSlug = (name, value) => {
+    const slug = createSlug(value);
+    updProduct(name, slug);
   }
 
   const handleSelectChange = (name, event: ChangeEvent<HTMLSelectElement>) => {
@@ -115,13 +125,13 @@ const useNewEditProduct = ({ handleChangeData }) => {
       }
       if (!data.thumbnail) delete data.thumbnail;
 
-      console.log("DATA", data);
+      // console.log("DATA", data);
       let prod;
       if (action === Actions.NEW) {
         data.stock = 0;
         prod = await createProduct(data);
         setLoading(false);
-        console.log("updProd", prod)
+        // console.log("updProd", prod)
         handleChangeData(prod);
 
       } else {
@@ -136,7 +146,7 @@ const useNewEditProduct = ({ handleChangeData }) => {
 
         prod = await updateProduct(id, updFields);
         setLoading(false);
-        console.log("updProd", prod)
+        // console.log("updProd", prod)
         handleChangeData(prod);
       }
 
@@ -180,6 +190,6 @@ const useNewEditProduct = ({ handleChangeData }) => {
     }
   }
 
-  return { categories, brands, product, errors, action, loading, preview, onSelectFile, handleSelectChange, handleChange, handleCancel, hadleSubmit }
+  return { categories, brands, product, errors, action, loading, preview, onSelectFile, handleSelectChange, handleChange, handleChangeSlug, handleCancel, hadleSubmit }
 }
 export default useNewEditProduct

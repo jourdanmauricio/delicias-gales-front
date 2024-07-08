@@ -9,7 +9,7 @@ import EditIcon from '@/icons/edit';
 import ProductTabs from './ProductTabs';
 
 const NewEditProduct = ({ handleChangeData }) => {
-  const { categories, brands, product, loading, preview, onSelectFile, handleChange, handleCancel, hadleSubmit, handleSelectChange, action, errors } = useNewEditProduct({ handleChangeData });
+  const { categories, brands, product, loading, preview, action, errors, onSelectFile, handleChange, handleCancel, hadleSubmit, handleSelectChange, handleChangeSlug } = useNewEditProduct({ handleChangeData });
   console.log("categories", categories)
   console.log("product", product)
 
