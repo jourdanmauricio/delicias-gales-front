@@ -27,7 +27,6 @@ const useNewEditBrand = ({ brand, action, handleRefresh }) => {
     if (action === Actions.EDIT) {
       setData(brand)
     }
-    console.log("brand", brand)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [action])
 
@@ -63,7 +62,6 @@ const useNewEditBrand = ({ brand, action, handleRefresh }) => {
   };
 
   const handleSubmit = async (event) => {
-    console.log("Submit")
     event.preventDefault();
 
     const errors = validateForm(data, 'editBrandForm');

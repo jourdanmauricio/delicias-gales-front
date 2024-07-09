@@ -10,8 +10,6 @@ import ProductTabs from './ProductTabs';
 
 const NewEditProduct = ({ handleChangeData }) => {
   const { categories, brands, product, loading, preview, action, errors, onSelectFile, handleChange, handleCancel, hadleSubmit, handleSelectChange } = useNewEditProduct({ handleChangeData });
-  console.log("categories", categories)
-  console.log("product", product)
 
   return (<>
     <div className='text-sm'><button onClick={handleCancel}>Productos</button> / {action === Actions.NEW ? 'Nuevo' : 'Modificar'}</div>

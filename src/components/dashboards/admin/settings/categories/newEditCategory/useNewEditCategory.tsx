@@ -28,7 +28,6 @@ const useNewEditCategory = ({ category, action, handleRefresh }) => {
     if (action === Actions.EDIT) {
       setData(category)
     }
-    console.log("category", category)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [action])
 
@@ -64,7 +63,6 @@ const useNewEditCategory = ({ category, action, handleRefresh }) => {
   };
 
   const handleSubmit = async (event) => {
-    console.log("Submit")
     event.preventDefault();
 
     const errors = validateForm(data, 'editCategoryForm');

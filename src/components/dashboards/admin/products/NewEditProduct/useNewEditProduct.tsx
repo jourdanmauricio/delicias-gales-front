@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { fields } from '@/components/forms/constants/constants';
-import { validateForm } from '@/components/forms/validateForm';
+import { validatefield, validateForm } from '@/components/forms/validateForm';
+
 import { createSlug } from '@/helpers/createSlug';
 import { useProductStore } from '@/store/product.store';
 import getBrands from '@/utils/api/brands/getBrands';
@@ -14,6 +15,8 @@ import removeProductImage from '@/utils/api/productImage/removeProductImage';
 import createProduct from '@/utils/api/products/createProduct';
 import updateProduct from '@/utils/api/products/updateProduct';
 import { initialProd } from '@/utils/constants';
+import { IBrand } from '@/utils/types/brands/IBrand';
+import { IProduct } from '@/utils/types/products/IProduct';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import { ChangeEvent, useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
@@ -34,7 +37,6 @@ const useNewEditProduct = ({ handleChangeData }) => {
   const fields = useProductStore(state => state.fields)
 
   const state = useProductStore(state => state)
-  // console.log("STATE", state)
 
   const fetchData = async () => {
     const categories = await getCategories();
@@ -42,7 +44,7 @@ const useNewEditProduct = ({ handleChangeData }) => {
     const brands = await getBrands();
     setBrands(brands);
     if (action === Actions.NEW) {
-      const brand = brands.find(el => el.name.toLowerCase().includes('gales'))
+      const brand = brands.find((el: IBrand) => el.name.toLowerCase().includes('gales'))
       updProduct('brandId', brand.id)
     }
   }
@@ -65,6 +67,13 @@ const useNewEditProduct = ({ handleChangeData }) => {
   }, [selectedFile]);
 
   const handleChange = (name, value) => {
+
+    // const error = validatefield(name, value);
+    // setErrors({
+    //   ...errors,
+    //   [name]: error,
+    // });
+
     updProduct(name, value)
     if (name === 'name') {
       const slug = createSlug(value);
@@ -120,13 +129,12 @@ const useNewEditProduct = ({ handleChangeData }) => {
       }
       if (!data.thumbnail) delete data.thumbnail;
 
-      // console.log("DATA", data);
+      console.log("DATA", data);
       let prod;
       if (action === Actions.NEW) {
         data.stock = 0;
         prod = await createProduct(data);
         setLoading(false);
-        // console.log("updProd", prod)
         handleChangeData(prod);
 
       } else {
@@ -141,7 +149,7 @@ const useNewEditProduct = ({ handleChangeData }) => {
 
         prod = await updateProduct(id, updFields);
         setLoading(false);
-        // console.log("updProd", prod)
+
         handleChangeData(prod);
       }
 

@@ -3,7 +3,6 @@ import UsersTable from './UsersTable/UsersTable';
 
 const Users = async () => {
   const users = await getAllUsers();
-  console.log("users", users)
   return (
     <UsersTable users={users} />
   )

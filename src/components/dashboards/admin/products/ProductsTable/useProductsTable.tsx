@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image';
 
-import { validateForm, validatefield } from '@/components/forms/validateForm';
 import { FilterComponent } from '@/components/shared/Table/FilterComponent';
 import { EditIcon, TrashIcon, PlusIcon } from '@/icons';
 import CircleButton from '@/components/shared/CircleButton';

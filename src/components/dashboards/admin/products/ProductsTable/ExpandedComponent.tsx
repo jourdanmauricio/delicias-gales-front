@@ -1,8 +1,9 @@
+import Image from 'next/image';
+
 import CircleButton from '@/components/shared/CircleButton';
 import { EditIcon, TrashIcon } from '@/icons';
 import { IBrand } from '@/utils/types/brands/IBrand';
 import { ICategory } from '@/utils/types/categories/ICategory';
-import Image from 'next/image';
 
 const ExpandedComponent = ({ row, handleDelete, onEdit, brands, categories }) => {
 

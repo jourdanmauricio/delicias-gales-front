@@ -45,8 +45,6 @@ const useUsersTable = ({ users }) => {
 
   useEffect(() => {
     setData(users);
-    console.log("users", users);
-
 
     setSellers(
       users.filter(

@@ -8,7 +8,6 @@ const Products = async () => {
   const categories = await getCategories();
   const brands = await getBrands();
 
-  console.log("products", products)
   return (
     <ProductsTable products={products} categories={categories} brands={brands} />
   )

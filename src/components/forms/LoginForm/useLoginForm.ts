@@ -50,7 +50,6 @@ const useLoginForm = () => {
     setLoading(false);
     if (!data.error) {
       setUser(data.user);
-      console.log(data);
       if (data.user.role === "customer") {
         setUserId(data.user.id);
       }

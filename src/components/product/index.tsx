@@ -6,7 +6,7 @@ const Product = async ({ params }: { params: { slug: string } }) => {
 
   const product = await getProductBySlug(params.slug);
 
-  console.log("product", product)
+  // console.log("product", product)
 
   return (
     <div className='w-full flex gap-4 mt-8 flex-col md:flex-row container mx-auto justify-center min-h-screen'>

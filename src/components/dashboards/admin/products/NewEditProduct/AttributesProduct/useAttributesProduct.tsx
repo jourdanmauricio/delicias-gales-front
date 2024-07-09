@@ -61,7 +61,6 @@ const useAttributesProduct = () => {
   }
 
   const handleChangeAttrib = (id, name, value) => {
-    console.log("change", id, name, value);
     const newAttribs = product.prodAttributes.map(el => el.id === id ? { ...el, [name]: value, action: el.action === Actions.NEW ? Actions.NEW : Actions.EDIT } : el)
     updProduct('prodAttributes', newAttribs);
   }

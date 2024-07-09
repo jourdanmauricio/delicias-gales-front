@@ -17,17 +17,8 @@ const useAttributes = ({ allAtributes }) => {
   const [attributes, setAttributes] = useState([]);
   const [currentData, setCurrentData] = useState(initAttribute);
   const [action, setAction] = useState(Actions.VIEW)
-  // const [pending, setPending] = useState(false);
 
-  // const fetchData = async () => {
-  //   setPending(true);
-  //   const attributes = await getAttributes();
-  //   console.log("attributes", attributes)
-  //   setAttributes(attributes);
-  //   setPending(false);
-  // }
   useEffect(() => {
-    //fetchData()
     setAttributes(allAtributes);
   }, [allAtributes])
 
@@ -87,7 +78,6 @@ const useAttributes = ({ allAtributes }) => {
   ]
 
   const handleNewEdit = () => {
-    console.log("handleNewEdit action", action)
 
     Swal.fire({
       title: `Modificar atibuto ${currentData.name}`,

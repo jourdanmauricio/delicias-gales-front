@@ -2,7 +2,6 @@ import { axiosApi } from '../api';
 
 const getProduct = async (id: string) => {
 
-  console.log("getCategory", id)
   try {
     const response = await axiosApi.get(`/products/${id}`);
 

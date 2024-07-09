@@ -8,8 +8,6 @@ const Brands = ({ allBrands }) => {
 
   const { brands, columns, currentData, actionsMenu, action, rowExpand, expandRow, ExpandedComponent, handleRefresh, handleCancel } = useBrands({ allBrands });
 
-  console.log("AllBrands", allBrands)
-
   return (
     <>
       <div className='text-sm mt-4 ml-4'>

@@ -2,7 +2,6 @@ import { axiosApi } from '../api';
 
 const getProductBySlug = async (slug: string) => {
 
-  console.log("getProductBySlug", slug)
   try {
     const response = await axiosApi.get(`/products/find-by-slug/${slug}`);
 

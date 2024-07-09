@@ -11,11 +11,9 @@ const useImagesProduct = () => {
 
   const onNew = () => {
     openModalUp();
-    console.log("NEW");
   }
 
   const handleDelete = (id) => {
-    console.log("delete", id);
     const newAttribs = product.images.map(el => el.id === id ? { ...el, action: Actions.DELETE } : el)
     updProduct('images', newAttribs);
   }
