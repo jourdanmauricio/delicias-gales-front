@@ -9,9 +9,8 @@ import { FilterComponent } from "@/components/shared/Table/FilterComponent";
 import createUser from "@/utils/api/users/createUser";
 import putUser from "@/utils/api/users/putUser";
 import CircleButton from "@/components/shared/CircleButton";
-import EditIcon from "@/icons/edit";
-import PlusIcon from "@/icons/plus";
-import TrashIcon from "@/icons/trash";
+import { EditIcon, TrashIcon, PlusIcon } from "@/icons";
+
 
 const intialUser = {
   address: "",
@@ -47,7 +46,7 @@ const useUsersTable = ({ users }) => {
   useEffect(() => {
     setData(users);
     console.log("users", users);
-    
+
 
     setSellers(
       users.filter(
@@ -206,9 +205,8 @@ const useUsersTable = ({ users }) => {
       setLoading(false);
       await Swal.fire({
         icon: "success",
-        title: `Usuario ${
-          action === "NEW" ? "creado" : "modificado"
-        } con éxito`,
+        title: `Usuario ${action === "NEW" ? "creado" : "modificado"
+          } con éxito`,
         showConfirmButton: false,
         width: "450px",
         timer: 1500,

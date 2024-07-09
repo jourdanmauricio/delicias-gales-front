@@ -3,9 +3,7 @@
 import React from 'react';
 
 import useRecoveryPasswordForm from './useRecoveryPasswordForm';
-import EyeIcon from '@/icons/eye';
-import EyeSlashIcon from '@/icons/eyeSlash';
-
+import { EyeIcon, EyeSlashIcon } from '@/icons';
 
 const RecoveryPasswordForm = ({ searchParams }: { searchParams: { token: string } }) => {
 

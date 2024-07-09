@@ -1,10 +1,9 @@
 'use client';
 import React from 'react';
-
 import Link from 'next/link';
+
 import Spinner2 from '@/components/shared/Spinner2';
-import EyeIcon from '@/icons/eye';
-import EyeSlashIcon from '@/icons/eyeSlash';
+import { EyeIcon, EyeSlashIcon } from '@/icons';
 import useRegisterForm from './useRegisterForm';
 
 const LoginForm = () => {

@@ -1,7 +1,8 @@
-import Link from 'next/link'
-import CircleButton from '@/components/shared/CircleButton'
-import SessionMenu from '@/components/Menu/SessionMenu'
-import UserIcon from '@/icons/user'
+import Link from 'next/link';
+
+import CircleButton from '@/components/shared/CircleButton';
+import SessionMenu from '@/components/Menu/SessionMenu';
+import { UserIcon } from '@/icons';
 
 const DashboardMenu = async ({ user }) => {
   return (

@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import useLoginForm from '../LoginForm/useLoginForm';
 import Link from 'next/link';
 import Spinner2 from '@/components/shared/Spinner2';
-import EyeIcon from '@/icons/eye';
-import EyeSlashIcon from '@/icons/eyeSlash';
+import { EyeIcon, EyeSlashIcon } from '@/icons';
 
 const LoginForm = () => {
   const { newData, errors, loading, handleChange, handleSubmit } = useLoginForm();

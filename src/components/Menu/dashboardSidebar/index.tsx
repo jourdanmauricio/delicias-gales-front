@@ -1,9 +1,10 @@
 "use client";
-import { usePathname } from 'next/navigation'
-import ArrowLeftIcon from '@/icons/arrowLeft';
-import ArrowRightIcon from '@/icons/arrowRight';
+
 import Link from 'next/link';
 import { useState } from 'react';
+
+import { usePathname } from 'next/navigation'
+import { ArrowLeftIcon, ArrowRightIcon } from '@/icons';
 import menuRole from '@/utils/arrayMenu/menuRoles';
 
 const DashboardSidebar = ({ user }) => {

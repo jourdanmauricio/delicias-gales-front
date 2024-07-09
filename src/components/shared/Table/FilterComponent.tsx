@@ -1,4 +1,4 @@
-import CloseSquareIcon from '@/icons/closeSquare';
+import { CloseSquareIcon } from '@/icons';
 
 export const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <div className='relative'>

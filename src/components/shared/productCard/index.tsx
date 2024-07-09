@@ -1,7 +1,8 @@
 import Image from "next/image";
-import AddToCart from "./AddToCart";
 import Link from 'next/link';
-import EyeIcon from '@/icons/eye';
+
+import AddToCart from "./AddToCart";
+import { EyeIcon } from '@/icons';
 
 const ProductCard = ({ product }) => {
   return (

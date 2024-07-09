@@ -1,14 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import Swal from 'sweetalert2';
+import Image from 'next/image';
 
 import { Actions } from '@/utils/types/tables/actions.enum';
 import CircleButton from '@/components/shared/CircleButton';
-// import getCategories from '@/utils/api/categories/getCategories';
 import removeCategory from '@/utils/api/categories/removeCategory';
-import EditIcon from '@/icons/edit';
-import PlusIcon from '@/icons/plus';
-import TrashIcon from '@/icons/trash';
-import Image from 'next/image';
+import { EditIcon, PlusIcon, TrashIcon } from '@/icons';
 
 const initCat = {
   id: '',

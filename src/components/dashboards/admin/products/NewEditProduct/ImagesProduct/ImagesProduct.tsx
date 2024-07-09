@@ -1,10 +1,9 @@
 import CircleButton from '@/components/shared/CircleButton'
-import PlusIcon from '@/icons/plus'
 import useImagesProduct from './useImagesProduct'
 import { Modal } from '@/components/shared/Modal/Modal';
 import UploadFile from '../UploadFile/UploadFile';
 import Image from 'next/image';
-import TrashIcon from '@/icons/trash';
+import { TrashIcon, PlusIcon } from '@/icons';
 import { Actions } from '@/utils/types/tables/actions.enum';
 
 const ImagesProduct = () => {

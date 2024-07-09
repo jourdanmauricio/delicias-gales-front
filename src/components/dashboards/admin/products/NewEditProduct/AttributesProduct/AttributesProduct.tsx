@@ -1,7 +1,6 @@
 import CircleButton from '@/components/shared/CircleButton';
 import useAttributesProduct from './useAttributesProduct'
-import TrashIcon from '@/icons/trash';
-import PlusIcon from '@/icons/plus';
+import { TrashIcon, PlusIcon } from '@/icons';
 import { Actions } from '@/utils/types/tables/actions.enum';
 
 const AttributesProduct = () => {

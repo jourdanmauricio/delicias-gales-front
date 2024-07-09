@@ -1,9 +1,10 @@
 "use client";
 
-import HamburgerMenuIcon from '@/icons/HamburgerMenu';
-import arrayNavbarMenu from '@/utils/arrayMenu/arrayNavbarMenu';
 import Link from 'next/link';
 import { useState } from 'react';
+
+import { HamburgerMenuIcon } from '@/icons';
+import arrayNavbarMenu from '@/utils/arrayMenu/arrayNavbarMenu';
 
 const MobileMenu = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false)

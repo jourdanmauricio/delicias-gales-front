@@ -1,8 +1,8 @@
 "use client";
 
-import EditIcon from '@/icons/edit'
-import Spinner2 from '@/components/shared/Spinner2'
-import Image from 'next/image'
+import { EditIcon } from '@/icons/';
+import Spinner2 from '@/components/shared/Spinner2';
+import Image from 'next/image';
 import useNewEditBrand from './useNewEditBrand';
 import { Actions } from '@/utils/types/tables/actions.enum';
 

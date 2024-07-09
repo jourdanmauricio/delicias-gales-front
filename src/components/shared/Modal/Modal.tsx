@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
+
+import { CloseSquareIcon } from '@/icons';
 import styles from './Modal.module.css';
-import CloseSquareIcon from '../../../icons/closeSquare';
 
 function Modal({
   children,

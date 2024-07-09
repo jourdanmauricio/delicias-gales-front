@@ -1,10 +1,8 @@
-import arrayNavbarMenu from '@/utils/arrayMenu/arrayNavbarMenu'
 import Link from 'next/link'
-import SocialNetworks from './socialNetworks'
-import HamburgerMenuIcon from '@/icons/HamburgerMenu'
-import WhatsAppIcon from '@/icons/whatsapp'
-import InstagramIcon from '@/icons/instagram'
-import FacebookIcon from '@/icons/facebook'
+
+import arrayNavbarMenu from '@/utils/arrayMenu/arrayNavbarMenu';
+import SocialNetworks from './socialNetworks';
+import { FacebookIcon, InstagramIcon, WhatsAppIcon } from '@/icons';
 
 const Footer = () => {
   return (

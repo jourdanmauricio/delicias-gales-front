@@ -1,15 +1,8 @@
 import CircleButton from '@/components/shared/CircleButton';
-import EditIcon from '@/icons/edit';
-import PlusIcon from '@/icons/plus';
-import TrashIcon from '@/icons/trash';
-// import getAttributes from '@/utils/api/attributes/getAttributes';
+import { EditIcon, PlusIcon, TrashIcon } from '@/icons';
 import newAttribute from '@/utils/api/attributes/newAttribute';
 import removeAttribute from '@/utils/api/attributes/removeAttibute';
 import updAttribute from '@/utils/api/attributes/updAttribute';
-// import getBrands from '@/utils/api/brands/getBrands';
-// import newBrand from '@/utils/api/brands/newBrand';
-// import removeBrand from '@/utils/api/brands/removeBrand';
-// import updBrand from '@/utils/api/brands/updBrand';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import { useEffect, useMemo, useState } from 'react';
 import Swal from 'sweetalert2';

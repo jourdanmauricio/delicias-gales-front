@@ -1,9 +1,10 @@
-import UserIcon from "@/icons/user";
-import CircleButton from "../../shared/CircleButton";
 import Link from "next/link";
+
+import SessionMenu from "../SessionMenu";
+import CircleButton from "../../shared/CircleButton";
+import { UserIcon } from "@/icons";
 import { UserSession } from "@/app/lib/definitions";
 import { getSession } from "@/app/lib/session";
-import SessionMenu from "../SessionMenu";
 import arrayNavbarMenu from "@/utils/arrayMenu/arrayNavbarMenu";
 import DinamicCart from "./dinamicCart";
 import MobileMenu from './mobileMenu';

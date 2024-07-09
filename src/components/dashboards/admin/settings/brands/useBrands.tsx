@@ -1,15 +1,11 @@
-import CircleButton from '@/components/shared/CircleButton';
-import EditIcon from '@/icons/edit';
-import PlusIcon from '@/icons/plus';
-import TrashIcon from '@/icons/trash';
-// import getBrands from '@/utils/api/brands/getBrands';
-import newBrand from '@/utils/api/brands/newBrand';
-import removeBrand from '@/utils/api/brands/removeBrand';
-import updBrand from '@/utils/api/brands/updBrand';
-import { Actions } from '@/utils/types/tables/actions.enum';
-import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
+import Image from 'next/image';
 import Swal from 'sweetalert2';
+
+import CircleButton from '@/components/shared/CircleButton';
+import { EditIcon, PlusIcon, TrashIcon } from '@/icons';
+import removeBrand from '@/utils/api/brands/removeBrand';
+import { Actions } from '@/utils/types/tables/actions.enum';
 
 const initBrand = {
   id: '',

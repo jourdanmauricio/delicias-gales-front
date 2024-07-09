@@ -1,8 +1,4 @@
-import HomeIcon from '@/icons/home';
-import OrdersIcon from '@/icons/orders';
-import ProductIcon from '@/icons/product';
-import SettingsIcon from '@/icons/settings';
-import UsersIcon from '@/icons/users';
+import { HomeIcon, OrdersIcon, ProductIcon, SettingsIcon, UsersIcon } from '@/icons';
 
 const menuRole = {
   admin: [

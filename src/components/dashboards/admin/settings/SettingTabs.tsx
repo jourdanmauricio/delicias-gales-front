@@ -5,9 +5,7 @@ import { useState } from 'react';
 import Categories from './categories/Categories';
 import Brands from './brands/Brands';
 import Attributes from './attributes/Attributes';
-import AttributesIcon from '@/icons/attributes';
-import BrandsIcon from '@/icons/brands';
-import CategoriesIcon from '@/icons/categories';
+import { AttributesIcon, BrandsIcon, CategoriesIcon } from '@/icons';
 
 
 const SettingsTabs = ({ allBrands, allAttributes, allCategories }) => {

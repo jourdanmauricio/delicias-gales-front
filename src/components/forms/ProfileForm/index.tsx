@@ -6,7 +6,7 @@ import 'react-international-phone/style.css';
 import Spinner2 from '@/components/shared/Spinner2'
 import useProfileForm from './useProfileForm'
 import Image from 'next/image';
-import EditIcon from '@/icons/edit';
+import { EditIcon } from '@/icons';
 
 const Profile = () => {
   const { profile, loading, errors, selectedFile, preview, handleChange, handleSubmit, onSelectFile, handleCancel } = useProfileForm()

@@ -1,10 +1,12 @@
 "use client";
-import AddToCart from '@/components/shared/productCard/AddToCart';
-import CartIcon from "@/icons/cart";
-import { useShopCartStore } from "@/store/shopCart.store";
+
+import { useEffect, useRef, useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from "react";
+
+import AddToCart from '@/components/shared/productCard/AddToCart';
+import { CartIcon } from "@/icons";
+import { useShopCartStore } from "@/store/shopCart.store";
 
 const DinamicCart = () => {
   const [prodQuantity, setProdQuantity] = useState(0);

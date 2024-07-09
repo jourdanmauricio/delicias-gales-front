@@ -1,4 +1,3 @@
-import HamburgerMenuIcon from '@/icons/HamburgerMenu'
 import Link from 'next/link'
 
 type SocialNetworks = {

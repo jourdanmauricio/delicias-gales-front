@@ -5,7 +5,7 @@ import Spinner2 from '@/components/shared/Spinner2'
 import useNewEditProduct from './useNewEditProduct';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import Image from 'next/image';
-import EditIcon from '@/icons/edit';
+import { EditIcon } from '@/icons';
 import ProductTabs from './ProductTabs';
 
 const NewEditProduct = ({ handleChangeData }) => {
