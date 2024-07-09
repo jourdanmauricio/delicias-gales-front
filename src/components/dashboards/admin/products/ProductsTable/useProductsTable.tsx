@@ -12,17 +12,15 @@ import getProduct from '@/utils/api/products/getProduct';
 import { useProductStore } from '@/store/product.store';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import { initialProd } from '@/utils/constants';
+import { IProduct } from '@/utils/types/products/IProduct';
 
-const useProductsTable = ({ products }) => {
+const useProductsTable = ({ products, categories, brands }) => {
   const [data, setData] = useState([]);
   const [filterText, setFilterText] = useState('');
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [rowExpand, setRowExpand] = useState({});
 
   const { action, setAction, setProduct } = useProductStore(state => state)
-  // const state = useProductStore(state => state)
-
-  // console.log("state", state)
 
   const filteredItems = data.filter(
     item =>
@@ -57,11 +55,74 @@ const useProductsTable = ({ products }) => {
       </div>
     </div>
     <div className="bg-gray-300 rounded text-sm m-4 p-4 border border-gray-500 shadow-xl grid grid-cols-1 gap-2 md:grid-cols-2">
-      <p>{data.name}</p>
-
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Nombre:</span>
+        <span>{data.name}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Slug:</span>
+        <span>{data.slug}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Código de descuento:</span>
+        <span></span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Marca:</span>
+        <span>{brands.find(brand => (brand.id === data.brandId)).name}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Código:</span>
+        <span>{data.cod}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Descripción:</span>
+        <span>{data.description}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Categorías:</span>
+        <span>
+          {data.categoriesIds.map((prodCat, index: number) => {
+            const categoryName = categories.find(cat => cat.id === prodCat).name;
+            return (
+              <span className="inline" key={prodCat}>
+                {categoryName}{index < data.categoriesIds.length - 1 && ', '}
+              </span>
+            );
+          })}
+        </span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Precio original:</span>
+        <span>{data.originalPrice}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Precio minorista:</span>
+        <span>{data.retailPrice}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Precio mayorista:</span>
+        <span>{data.wholesalePrice}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Cantidad mínima:</span>
+        <span>{data.minQuantity}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Precio máxima:</span>
+        <span>{data.maxQuantity}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Estado:</span>
+        <span>{data.status}</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <span className="font-semibold">Stock:</span>
+        <span>{data.stock}</span>
+      </div>
       <div className="grid grid-cols-2">
         <span className="font-semibold">Imagen:</span>
-        <Image src={data.thumbnail} alt={data.name} height={150} width={150} />
+        <Image className='h-[50px] w-[50px] object-cover' src={data.thumbnail} alt={data.name} height={150} width={150} />
       </div>
     </div>
   </div>
@@ -69,9 +130,9 @@ const useProductsTable = ({ products }) => {
   const columns = [
     {
       name: 'Imagen',
-      width: '122px',
+      width: '90px',
       hide: 768,
-      cell: row => <Image className='w-full h-[90px] object-cover' width={90} height={90} src={row.thumbnail} alt={row.name} />
+      cell: row => <Image className='w-full h-[60px] object-cover' width={60} height={60} src={row.thumbnail} alt={row.name} />
     },
     {
       name: 'Nombre',
@@ -82,27 +143,31 @@ const useProductsTable = ({ products }) => {
       name: 'Código',
       selector: row => row.cod,
       sortable: true,
-      hide: 768
+      hide: 1024
     },
     {
       name: 'Precio May',
       selector: row => row.wholesalePrice,
       sortable: true,
+      hide: 768,
     },
     {
       name: 'Precio Min',
       selector: row => row.retailPrice,
       sortable: true,
+      hide: 768,
     },
     {
       name: 'Stock',
       selector: row => row.stock,
       sortable: true,
+      hide: 1024,
     },
     {
       name: 'Estado',
       selector: row => tradStatus(row.status),
       sortable: true,
+      hide: 768,
     },
     {
       name: 'Acciones',
@@ -132,7 +197,7 @@ const useProductsTable = ({ products }) => {
     },
   ]
 
-  const handleDelete = (row) => {
+  const handleDelete = (row: IProduct) => {
     setProduct(row);
     // verificar Compras!!!!
   }
@@ -143,7 +208,7 @@ const useProductsTable = ({ products }) => {
     // setAction('NEW');
   };
 
-  const onEdit = async (row) => {
+  const onEdit = async (row: IProduct) => {
     const product = await getProduct(row.id);
     setProduct(product);
     setAction(Actions.EDIT)
@@ -174,11 +239,11 @@ const useProductsTable = ({ products }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterText, resetPaginationToggle]);
 
-  const expandRow = (bool, row) => {
+  const expandRow = (bool: boolean, row: IProduct) => {
     (bool === true) ? setRowExpand(row) : setRowExpand({})
   };
 
-  const handleChangeData = (product) => {
+  const handleChangeData = (product: IProduct) => {
     if (action === Actions.EDIT) {
       const newData = data.map(el => el.id === product.id ? product : el)
       setData(newData);
@@ -192,6 +257,6 @@ const useProductsTable = ({ products }) => {
 
   }
 
-  return { columns, action, ExpandedComponent, rowExpand, expandRow, filteredItems, subHeaderComponentMemo, handleChangeData }
+  return { columns, action, rowExpand, filteredItems, subHeaderComponentMemo, handleChangeData, ExpandedComponent, expandRow }
 }
 export default useProductsTable

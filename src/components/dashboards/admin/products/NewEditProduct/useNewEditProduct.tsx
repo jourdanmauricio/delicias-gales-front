@@ -72,11 +72,6 @@ const useNewEditProduct = ({ handleChangeData }) => {
     }
   }
 
-  const handleChangeSlug = (name, value) => {
-    const slug = createSlug(value);
-    updProduct(name, slug);
-  }
-
   const handleSelectChange = (name, event: ChangeEvent<HTMLSelectElement>) => {
     const selectedValues = Array.from(event.target.selectedOptions, option => (option.value));
     updProduct(name, selectedValues);
@@ -190,6 +185,6 @@ const useNewEditProduct = ({ handleChangeData }) => {
     }
   }
 
-  return { categories, brands, product, errors, action, loading, preview, onSelectFile, handleSelectChange, handleChange, handleChangeSlug, handleCancel, hadleSubmit }
+  return { categories, brands, product, errors, action, loading, preview, onSelectFile, handleSelectChange, handleChange, handleCancel, hadleSubmit }
 }
 export default useNewEditProduct

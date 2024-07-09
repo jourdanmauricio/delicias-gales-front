@@ -6,8 +6,8 @@ import useProductsTable from './useProductsTable';
 import NewEditProduct from '../NewEditProduct/NewEditProduct';
 import { Actions } from '@/utils/types/tables/actions.enum';
 
-const ProductsTable = ({ products }) => {
-  const { columns, action, ExpandedComponent, rowExpand, expandRow, filteredItems, subHeaderComponentMemo, handleChangeData } = useProductsTable({ products });
+const ProductsTable = ({ products, categories, brands }) => {
+  const { columns, action, rowExpand, filteredItems, subHeaderComponentMemo, handleChangeData, expandRow, ExpandedComponent } = useProductsTable({ products, categories, brands });
 
   return (<>
     {action === Actions.VIEW &&
