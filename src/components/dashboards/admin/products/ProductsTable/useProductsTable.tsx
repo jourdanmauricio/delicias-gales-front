@@ -13,6 +13,8 @@ import { useProductStore } from '@/store/product.store';
 import { Actions } from '@/utils/types/tables/actions.enum';
 import { initialProd } from '@/utils/constants';
 import { IProduct } from '@/utils/types/products/IProduct';
+import { ICategory } from '@/utils/types/categories/ICategory';
+import { IBrand } from '@/utils/types/brands/IBrand';
 
 const useProductsTable = ({ products, categories, brands }) => {
   const [data, setData] = useState([]);
@@ -69,7 +71,7 @@ const useProductsTable = ({ products, categories, brands }) => {
       </div>
       <div className="grid grid-cols-2">
         <span className="font-semibold">Marca:</span>
-        <span>{brands.find(brand => (brand.id === data.brandId)).name}</span>
+        <span>{brands.find((brand: IBrand) => (brand.id === data.brandId)).name}</span>
       </div>
       <div className="grid grid-cols-2">
         <span className="font-semibold">Código:</span>
@@ -82,8 +84,8 @@ const useProductsTable = ({ products, categories, brands }) => {
       <div className="grid grid-cols-2">
         <span className="font-semibold">Categorías:</span>
         <span>
-          {data.categoriesIds.map((prodCat, index: number) => {
-            const categoryName = categories.find(cat => cat.id === prodCat).name;
+          {data.categoriesIds.map((prodCat: string, index: number) => {
+            const categoryName = categories.find((cat: ICategory) => cat.id === prodCat).name;
             return (
               <span className="inline" key={prodCat}>
                 {categoryName}{index < data.categoriesIds.length - 1 && ', '}
@@ -132,40 +134,40 @@ const useProductsTable = ({ products, categories, brands }) => {
       name: 'Imagen',
       width: '90px',
       hide: 768,
-      cell: row => <Image className='w-full h-[60px] object-cover' width={60} height={60} src={row.thumbnail} alt={row.name} />
+      cell: (row: IProduct) => <Image className='w-full h-[60px] object-cover' width={60} height={60} src={row.thumbnail} alt={row.name} />
     },
     {
       name: 'Nombre',
-      selector: row => row.name,
+      selector: (row: IProduct) => row.name,
       sortable: true,
     },
     {
       name: 'Código',
-      selector: row => row.cod,
+      selector: (row: IProduct) => row.cod,
       sortable: true,
       hide: 1024
     },
     {
       name: 'Precio May',
-      selector: row => row.wholesalePrice,
+      selector: (row: IProduct) => row.wholesalePrice,
       sortable: true,
       hide: 768,
     },
     {
       name: 'Precio Min',
-      selector: row => row.retailPrice,
+      selector: (row: IProduct) => row.retailPrice,
       sortable: true,
       hide: 768,
     },
     {
       name: 'Stock',
-      selector: row => row.stock,
+      selector: (row: IProduct) => row.stock,
       sortable: true,
       hide: 1024,
     },
     {
       name: 'Estado',
-      selector: row => tradStatus(row.status),
+      selector: (row: IProduct) => tradStatus(row.status),
       sortable: true,
       hide: 768,
     },
@@ -174,7 +176,7 @@ const useProductsTable = ({ products, categories, brands }) => {
       width: '15%',
       // center: true,
       hide: 768,
-      cell: (row) => (
+      cell: (row: IProduct) => (
         <div className="flex gap-4">
           <div
             onClick={() => handleDelete(row)}
