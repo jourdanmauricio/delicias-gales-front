@@ -1,9 +1,41 @@
 "use client";
+import newOrder from "@/utils/api/orders/newOrder";
 import ItemCar from "../Menu/HomeMenu/dinamicCart/itemCar";
-import { useShopCartStore } from "@/store/shopCart.store";
-
+import UseCar from "../Menu/HomeMenu/dinamicCart/useCar";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 const NewOrder = () => {
-  const { products } = useShopCartStore();
+  const { products, totalCart, userId, setProducts } = UseCar();
+  const domicilio = 225;
+  const router = useRouter();
+  const sendOrder = async () => {
+    const listProducts = products.map((product) => ({
+      id: product.id,
+      quantity: product.quantity,
+    }));
+    if (userId) {
+      const response = await newOrder({ products: listProducts, userId });
+      console.log("response", response);
+      Swal.fire({
+        icon: "success",
+        title: "su pedido se genero con el id " + response.id,
+        showConfirmButton: false,
+        width: "450px",
+        timer: 1500,
+      });
+      setProducts(null);
+
+      return;
+    }
+    Swal.fire({
+      icon: "success",
+      title: "aun no te encuentras logueado, te redirecionaremos al login",
+      showConfirmButton: false,
+      width: "450px",
+      timer: 1500,
+    });
+    router.push("/login");
+  };
 
   return (
     <div className="pt-8 flex gap-8 justify-center ">
@@ -21,21 +53,21 @@ const NewOrder = () => {
         <div className="border-t border-gray-950 py-4">
           <div className="flex justify-between mb-2">
             <p>Subtotal</p>
-            <p>$5000</p>
+            <p>${totalCart}</p>
           </div>
           <div className="flex justify-between">
             <p>Envio</p>
-            <p>$1000</p>
+            <p>${domicilio}</p>
           </div>
         </div>
         <div className="border-t border-gray-950 py-6">
           <div className="flex justify-between">
             <p>Total</p>
-            <p>$5000</p>
+            <p>${totalCart + domicilio}</p>
           </div>
         </div>
 
-        <button className="border border-gray-950 px-4 py-2 w-full">
+        <button onClick={sendOrder} className="btn btn-confirm w-full">
           Ir a pagar
         </button>
       </div>
