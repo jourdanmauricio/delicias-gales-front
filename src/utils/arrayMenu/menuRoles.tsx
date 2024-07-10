@@ -55,6 +55,33 @@ const menuRole = {
     //   icon: UsersIcon,
     // },
   ],
+  employee: [
+    { id: 1, name: "Home", href: "/dashboard/employee", icon: HomeIcon },
+    // {
+    //   id: 2,
+    //   name: "Configuración",
+    //   href: "/",
+    //   icon: SettingsIcon,
+    // },
+    {
+      id: 3,
+      name: "Ordenes",
+      href: "/dashboard/employee/employee-orders",
+      icon: OrdersIcon,
+    },
+    {
+      id: 4,
+      name: "Inventario",
+      href: "/dashboard/employee/inventory",
+      icon: ProductIcon,
+    },
+    // {
+    //   id: 5,
+    //   name: "Cartera",
+    //   href: "/",
+    //   icon: UsersIcon,
+    // },
+  ],
 };
 
 export default menuRole;
