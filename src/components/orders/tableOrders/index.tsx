@@ -20,11 +20,13 @@ const TableOrders = ({ dataOrders }) => {
     },
   ];
   return (
-    <DataTable
-      title="historial de ordenes"
-      columns={columns}
-      data={dataOrders}
-    />
+    <div className="md:w-3/4 mx-auto mt-8">
+      <DataTable
+        title="historial de ordenes"
+        columns={columns}
+        data={dataOrders}
+      />
+    </div>
   );
 };
 
