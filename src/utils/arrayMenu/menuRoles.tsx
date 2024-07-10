@@ -29,37 +29,31 @@ const menuRole = {
     },
   ],
   seller: [
-    { id: 1, name: "Home", href: "/dashboard/admin", icon: HomeIcon },
+    { id: 1, name: "Home", href: "/dashboard/seller", icon: HomeIcon },
+    // {
+    //   id: 2,
+    //   name: "Configuración",
+    //   href: "/",
+    //   icon: SettingsIcon,
+    // },
     {
-      id: 2,
-      name: "Configuración",
-      href: "/",
-      icon: SettingsIcon,
-    },
-    {
-      id: 7,
-      name: "Pedidos",
-      href: "/",
+      id: 3,
+      name: "Ordenes",
+      href: "/dashboard/seller/seller-orders",
       icon: OrdersIcon,
     },
     {
-      id: 5,
+      id: 4,
       name: "Clientes",
-      href: "/",
+      href: "/dashboard/seller/customers",
       icon: UsersIcon,
     },
-    {
-      id: 5,
-      name: "Inventarios",
-      href: "/",
-      icon: UsersIcon,
-    },
-    {
-      id: 5,
-      name: "Cartera",
-      href: "/",
-      icon: UsersIcon,
-    },
+    // {
+    //   id: 5,
+    //   name: "Cartera",
+    //   href: "/",
+    //   icon: UsersIcon,
+    // },
   ],
 };
 
