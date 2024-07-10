@@ -109,6 +109,9 @@ export const fields = {
   },
   sellerId: {
     required: false,
+    regex: /^[0-9a-zA-Z\s\-áéíóúÁÉÍÓÚñÑ.,(){}]$/,
+    msgError: "Debe tener entre 3 y 255 caracteres",
+    type: "text"    
   },
   // brandId: {
   //   regex: /^[0-9a-zA-Z\s\-áéíóúÁÉÍÓÚñÑ.,(){}]$/,

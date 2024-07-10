@@ -10,6 +10,7 @@ import createUser from "@/utils/api/users/createUser";
 import putUser from "@/utils/api/users/putUser";
 import CircleButton from "@/components/shared/CircleButton";
 import { EditIcon, TrashIcon, PlusIcon } from "@/icons";
+import { Actions } from '@/utils/types/tables/actions.enum';
 
 
 const intialUser = {
@@ -27,7 +28,7 @@ const intialUser = {
 
 const useUsersTable = ({ users }) => {
   const [data, setData] = useState([]);
-  const [action, setAction] = useState("VIEW");
+  const [action, setAction] = useState(Actions.VIEW);
   const [currentData, setCurrentData] = useState(intialUser);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -101,6 +102,10 @@ const useUsersTable = ({ users }) => {
           <span>{data.website}</span>
         </div>
         <div className="grid grid-cols-2">
+          <span className="font-semibold">Vendedor:</span>
+          <span>{sellers.find(seller => seller.id === data.sellerId)?.name}</span>
+        </div>
+        <div className="grid grid-cols-2">
           <span className="font-semibold">Imagen:</span>
           <span>{data.image}</span>
         </div>
@@ -154,20 +159,22 @@ const useUsersTable = ({ users }) => {
 
   const onNew = () => {
     setCurrentData(intialUser);
-    setAction("NEW");
+    setAction(Actions.NEW);
   };
 
   const handleCancel = () => {
     setCurrentData(intialUser);
-    setAction("VIEW");
+    setAction(Actions.VIEW);
   };
 
   const onEdit = (row) => {
     setCurrentData(row);
-    setAction("EDIT");
+    setAction(Actions.EDIT);
   };
 
   const handleChange = (name: string, value: string) => {
+
+    console.log("handleChange", name, value);
     setCurrentData({ ...currentData, [name]: value });
 
     const error = validatefield(name, value);
@@ -192,7 +199,7 @@ const useUsersTable = ({ users }) => {
       setLoading(true);
       const { id, ...data } = currentData;
       delete data.registerDate;
-      if (action === "NEW") {
+      if (action === Actions.NEW) {
         await createUser(data);
       } else {
         await putUser(id, data);
@@ -200,10 +207,11 @@ const useUsersTable = ({ users }) => {
 
       router.push("/dashboard/admin/users");
       router.refresh();
+      setAction(Actions.VIEW);
       setLoading(false);
       await Swal.fire({
         icon: "success",
-        title: `Usuario ${action === "NEW" ? "creado" : "modificado"
+        title: `Usuario ${action === Actions.NEW ? "creado" : "modificado"
           } con éxito`,
         showConfirmButton: false,
         width: "450px",
@@ -254,15 +262,15 @@ const useUsersTable = ({ users }) => {
     currentData,
     loading,
     rowExpand,
+    errors,
+    filteredItems,
+    subHeaderComponentMemo,
+    sellers,
     expandRow,
     ExpandedComponent,
     hadleSubmit,
     handleCancel,
-    errors,
     handleChange,
-    filteredItems,
-    subHeaderComponentMemo,
-    sellers,
   };
 };
 export default useUsersTable;
