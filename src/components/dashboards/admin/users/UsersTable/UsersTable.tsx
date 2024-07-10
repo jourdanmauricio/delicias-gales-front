@@ -4,11 +4,12 @@ import DataTable from 'react-data-table-component';
 import useUsersTable from './useUsersTable';
 import NewEditUser from '../NewEditUser/NewEditUser';
 import { paginationOptions } from '@/utils/types/tables/PaginationOptions';
+import { Actions } from '@/utils/types/tables/actions.enum';
 
 const UsersTable = ({ users }) => {
   const { columns, action, rowExpand, currentData, loading, errors, filteredItems, subHeaderComponentMemo, sellers, ExpandedComponent, hadleSubmit, handleCancel, handleChange, expandRow } = useUsersTable({ users });
   return (<>
-    {action === 'VIEW' &&
+    {action === Actions.VIEW &&
       < DataTable
         //dense
         title='Usuarios'
@@ -23,7 +24,7 @@ const UsersTable = ({ users }) => {
         paginationComponentOptions={paginationOptions}
       />
     }
-    {(action === 'NEW' || action === 'EDIT') && (
+    {(action === Actions.NEW || action === Actions.EDIT) && (
       <NewEditUser
         loading={loading}
         errors={errors}
