@@ -1,6 +1,1 @@
-const NewOrder = () => {
-  return (
-    <div>Nueva Orden</div>
-  )
-}
-export default NewOrder
+export {default} from '@/components/newOrder'
