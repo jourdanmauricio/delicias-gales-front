@@ -1,6 +1,8 @@
+import EcommerceTabs from './EcommerceTabs'
+
 const Ecommerce = () => {
   return (
-    <div>Ecommerce</div>
+    <EcommerceTabs />
   )
 }
 export default Ecommerce
