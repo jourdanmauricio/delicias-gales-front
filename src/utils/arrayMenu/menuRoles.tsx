@@ -1,4 +1,5 @@
 import { HomeIcon, OrdersIcon, ProductIcon, SettingsIcon, UsersIcon } from '@/icons';
+import EcommerceUpdateIcon from '@/icons/EcommerceUpdateIcon';
 
 const menuRole = {
   admin: [
@@ -8,6 +9,12 @@ const menuRole = {
       name: "Configuración",
       href: "/dashboard/admin/settings",
       icon: SettingsIcon,
+    },
+    {
+      id: 3,
+      name: "Ecommerce",
+      href: "/dashboard/admin/ecommerce",
+      icon: EcommerceUpdateIcon,
     },
     {
       id: 5,
