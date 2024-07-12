@@ -1,8 +1,12 @@
+import getAllSettings from '@/utils/api/settings/getAllSettings'
 import EcommerceTabs from './EcommerceTabs'
 
-const Ecommerce = () => {
+const Ecommerce = async () => {
+
+  const settings = await getAllSettings();
+
   return (
-    <EcommerceTabs />
+    <EcommerceTabs settings={settings} />
   )
 }
 export default Ecommerce
