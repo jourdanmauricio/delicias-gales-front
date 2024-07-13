@@ -97,10 +97,10 @@ const Footer = async () => {
                 <Link href={`mailto:${contact.email.value}`}>{contact.email.value}</Link>
               </div>
             )}
-            {contact.phone && (
+            {contact.telefono && (
               <div className='flex gap-4 items-center'>
                 <PhoneIcon className='w-6 h-6' />
-                <p>{contact.phone.value}</p>
+                <p>{contact.telefono.value}</p>
               </div>
             )}
           </div>

@@ -27,7 +27,7 @@ const EcommerceTabs = ({ settings }) => {
           className={toggleState === 2 ? 'tabs active__tabs' : 'tabs'}
         >
           {/* <BrandsIcon className='w-6 h-6' /> */}
-          <span>Marcas</span>
+          <span>Otro</span>
         </div>
 
         <div
@@ -35,7 +35,7 @@ const EcommerceTabs = ({ settings }) => {
           className={toggleState === 3 ? 'tabs active__tabs' : 'tabs'}
         >
           {/* <AttributesIcon className='w-6 h-6' /> */}
-          <span>Atributos</span>
+          <span>Otro 2</span>
         </div>
 
       </div>
