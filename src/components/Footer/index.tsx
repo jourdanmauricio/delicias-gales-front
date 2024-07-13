@@ -3,8 +3,41 @@ import Link from 'next/link'
 import arrayNavbarMenu from '@/utils/arrayMenu/arrayNavbarMenu';
 import SocialNetworks from './socialNetworks';
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from '@/icons';
+import getAllSettings from '@/utils/api/settings/getAllSettings';
+import EmailIcon from '@/icons/EmailIcon';
+import PhoneIcon from '@/icons/PhoneIcon';
 
-const Footer = () => {
+const Footer = async () => {
+
+  const settings = await getAllSettings();
+
+  // const socialNetworks = settings.filter(setting => setting.feature === 'socialNetworks');
+  // const facebook = socialNetworks.find(network => network.name === 'facebook');
+  // const whatsapp = socialNetworks.find(network => network.name === 'whatsapp');
+  // const instagram = socialNetworks.find(network => network.name === 'instagram');
+
+  const socialNetworks = settings
+    .filter(item => item.feature === 'socialNetworks')
+    .reduce((acc, item) => {
+      acc[item.name] = {
+        id: item.id,
+        value: item.value
+      };
+      return acc;
+    }, {});
+
+  const contact = settings
+    .filter(item => item.feature === 'contact')
+    .reduce((acc, item) => {
+      acc[item.name] = {
+        id: item.id,
+        value: item.value
+      };
+      return acc;
+    }, {});
+
+  console.log("contact", contact)
+
   return (
     <footer className='mt-8 bg-gray-900 w-full justify-around text-custom-secondary'>
       <main className='flex flex-col md:flex-row gap-4'>
@@ -41,19 +74,39 @@ const Footer = () => {
           <div className="flex mt-8 gap-4 justify-center items-center">
             {/* Links */}
 
-            <SocialNetworks href={'#'}>
-              <WhatsAppIcon className='h-6 w-6' />
-            </SocialNetworks>
-            <SocialNetworks href={'#'}>
-              <InstagramIcon className='h-6 w-6' />
-            </SocialNetworks>
-            <SocialNetworks href={'#'}>
-              <FacebookIcon className='h-6 w-6' />
-            </SocialNetworks>
+            {socialNetworks.whatsapp && (
+              <SocialNetworks href={socialNetworks.whatsapp.value}>
+                <WhatsAppIcon className='h-6 w-6' />
+              </SocialNetworks>
+            )}
+            {socialNetworks.instagram && (
+              <SocialNetworks href={socialNetworks.instagram.value}>
+                <InstagramIcon className='h-6 w-6' />
+              </SocialNetworks>
+            )}
+            {socialNetworks.facebook && (
+              <SocialNetworks href={socialNetworks.facebook.value}>
+                <FacebookIcon className='h-6 w-6' />
+              </SocialNetworks>
+            )}
+          </div>
+          <div className='mt-8 flex flex-col items-center justify-center gap-4'>
+            {contact.email && (
+              <div className='flex gap-4 items-center'>
+                <EmailIcon className='w-6 h-6' />
+                <Link href={`mailto:${contact.email.value}`}>{contact.email.value}</Link>
+              </div>
+            )}
+            {contact.telefono && (
+              <div className='flex gap-4 items-center'>
+                <PhoneIcon className='w-6 h-6' />
+                <p>{contact.telefono.value}</p>
+              </div>
+            )}
           </div>
         </section>
       </main>
-      <div className='bg-gray-950 w-full flex justify-center'>
+      <div className='mt-4 bg-gray-950 w-full flex justify-center'>
         <p className='py-2'>@Delicias Gales 2024</p>
       </div>
     </footer>

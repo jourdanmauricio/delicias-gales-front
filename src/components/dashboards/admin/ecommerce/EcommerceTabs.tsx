@@ -3,7 +3,7 @@ import SharedIcon from '@/icons/ShareIcon';
 import { useState } from 'react';
 import ContactInfo from './ContactInfo';
 
-const EcommerceTabs = () => {
+const EcommerceTabs = ({ settings }) => {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -27,7 +27,7 @@ const EcommerceTabs = () => {
           className={toggleState === 2 ? 'tabs active__tabs' : 'tabs'}
         >
           {/* <BrandsIcon className='w-6 h-6' /> */}
-          <span>Marcas</span>
+          <span>Otro</span>
         </div>
 
         <div
@@ -35,7 +35,7 @@ const EcommerceTabs = () => {
           className={toggleState === 3 ? 'tabs active__tabs' : 'tabs'}
         >
           {/* <AttributesIcon className='w-6 h-6' /> */}
-          <span>Atributos</span>
+          <span>Otro 2</span>
         </div>
 
       </div>
@@ -43,7 +43,7 @@ const EcommerceTabs = () => {
         <div
           className={`tab__content ${toggleState === 1 ? 'active__content' : ''}`}
         >
-          <ContactInfo />
+          <ContactInfo settings={settings} />
         </div>
 
         <div

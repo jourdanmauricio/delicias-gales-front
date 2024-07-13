@@ -1,9 +1,7 @@
 "use client";
 
 import { HandleLogout } from "@/actions/auth";
-import { useProductStore } from "@/store/product.store";
 import { useShopCartStore } from "@/store/shopCart.store";
-import { initialProd } from "@/utils/constants";
 import { Role } from "@/utils/types/users/usersRoles";
 import Image from "next/image";
 import Link from "next/link";
