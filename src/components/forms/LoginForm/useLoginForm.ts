@@ -47,6 +47,8 @@ const useLoginForm = () => {
 
     setLoading(true);
     const data = await HandleLogin(newData);
+    console.log("data", data);
+
     setLoading(false);
     if (!data.error) {
       setUser(data.user);
